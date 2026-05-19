@@ -1,0 +1,28 @@
+{
+  "name": "neem-personal-channel",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A full-stack creator-owned healing, media, courses, and digital products platform.",
+  "workspaces": [
+    "apps/client",
+    "apps/server",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev": "echo \"Run client and server separately for now\"",
+    "lint": "echo \"Lint setup coming soon\"",
+    "test": "echo \"Test setup coming soon\""
+  },
+  "keywords": [
+    "typescript",
+    "react",
+    "node",
+    "express",
+    "rest-api",
+    "clean-architecture",
+    "tailwind",
+    "fullstack"
+  ],
+  "author": "",
+  "license": "MIT"
+}
