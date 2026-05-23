@@ -216,12 +216,9 @@ function PremiumResourcesSection() {
               {item.description}
             </p>
 
-            <button
-              type="button"
-              className="mt-8 rounded-full bg-[#C9907A] px-6 py-3 font-black text-[#171615] transition hover:scale-105"
-            >
-              {item.cta}
-            </button>
+            <div className="mt-8">
+              <ButtonLink to="/shop">{item.cta}</ButtonLink>
+            </div>
           </article>
         ))}
       </div>
@@ -232,29 +229,36 @@ function PremiumResourcesSection() {
 function SocialHighlightsSection() {
   return (
     <section className="mx-auto max-w-6xl px-5 py-16 md:px-6 md:py-24">
-      <div className="rounded-[2rem] border border-white/10 bg-[#25231F] p-7 text-center shadow-xl md:p-12">
-        <p className="text-xs font-black uppercase tracking-[0.25em] text-[#C9907A]">
-          Social Highlights
-        </p>
+      <div className="grid gap-8 rounded-[2rem] border border-white/10 bg-[#25231F] p-7 shadow-xl md:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+        <div>
+          <p className="text-xs font-black uppercase tracking-[0.25em] text-[#C9907A]">
+            Social Highlights
+          </p>
 
-        <h2 className="mx-auto mt-4 max-w-3xl text-3xl font-black leading-tight md:text-5xl">
-          Social platforms bring discovery. Neem owns the journey.
-        </h2>
+          <h2 className="mt-4 text-3xl font-black leading-tight md:text-5xl">
+            Social brings discovery. Neem keeps the journey organized.
+          </h2>
+        </div>
 
-        <p className="mx-auto mt-5 max-w-2xl leading-7 text-[#C8B8AA]">
-          YouTube, Instagram, LinkedIn, and Facebook lead people here. The
-          website gives them structure, resources, and a reason to return.
-        </p>
+        <div>
+          <p className="leading-7 text-[#C8B8AA]">
+            The website becomes the home base. Visitors can discover short
+            content on social media, then return here for prayers, courses,
+            resources, and structured support.
+          </p>
 
-        <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {["YouTube", "Instagram", "LinkedIn", "Facebook"].map((platform) => (
-            <span
-              key={platform}
-              className="rounded-2xl border border-white/10 bg-[#171615] px-5 py-4 text-sm font-black text-[#F7F0E8]"
-            >
-              {platform}
-            </span>
-          ))}
+          <div className="mt-6 flex flex-wrap gap-3">
+            {["YouTube", "Instagram", "LinkedIn", "Facebook"].map(
+              (platform) => (
+                <span
+                  key={platform}
+                  className="rounded-full border border-white/10 bg-[#171615] px-4 py-2 text-xs font-black uppercase tracking-wider text-[#F7F0E8]"
+                >
+                  {platform}
+                </span>
+              ),
+            )}
+          </div>
         </div>
       </div>
     </section>
