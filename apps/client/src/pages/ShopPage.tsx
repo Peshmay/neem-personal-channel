@@ -64,77 +64,79 @@ type ShopHeroSectionProps = {
 
 function ShopHeroSection({ featuredProduct }: ShopHeroSectionProps) {
   return (
-    <section className="mx-auto grid max-w-6xl items-center gap-12 px-5 py-16 md:px-6 md:py-24 lg:grid-cols-[1fr_0.95fr]">
-      <div>
-        <p className="mb-4 text-xs font-black uppercase tracking-[0.28em] text-[#C9907A] md:text-sm">
-          Neem Shop
-        </p>
+    <section className="bg-[var(--color-bg)]">
+      <div className="mx-auto grid max-w-7xl gap-16 px-6 py-20 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:py-28">
+        <div>
+          <p className="mb-6 text-xs font-black uppercase tracking-[0.35em] text-[var(--color-burgundy)]">
+            Neem Shop
+          </p>
 
-        <h1 className="max-w-4xl text-4xl font-black leading-[1.05] md:text-6xl">
-          Courses, e-books, and templates for structured healing.
-        </h1>
+          <h1 className="max-w-4xl font-serif text-5xl font-normal leading-tight text-[var(--color-text)] md:text-7xl">
+            Courses, e-books, and templates for structured healing.
+          </h1>
 
-        <p className="mt-6 max-w-2xl text-base leading-8 text-[#C8B8AA] md:text-lg">
-          The shop turns Neem from a content platform into a real digital
-          product business: clear offers, instant downloads, and premium
-          learning paths.
-        </p>
+          <p className="mt-8 max-w-xl text-lg leading-8 text-[var(--color-muted-text)]">
+            The shop turns Neem from a content platform into a real digital
+            product business: clear offers, instant downloads, and premium
+            learning paths.
+          </p>
 
-        <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-          <ButtonLink to="/shop">Browse Products</ButtonLink>
-          <ButtonLink to="/media" variant="secondary">
-            Watch Free Content First
-          </ButtonLink>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <ButtonLink to="/shop">Browse Products</ButtonLink>
+            <ButtonLink to="/media" variant="secondary">
+              Free Content First
+            </ButtonLink>
+          </div>
         </div>
-      </div>
 
-      {featuredProduct && (
-        <article className="rounded-[2rem] border border-[#C9907A]/40 bg-[#25231F] p-5 shadow-2xl md:p-6">
-          <div className="mb-6 flex items-center justify-between gap-4">
-            <span className="rounded-full bg-[#C9907A] px-4 py-2 text-xs font-black uppercase tracking-wider text-[#171615]">
-              Featured
-            </span>
+        {featuredProduct && (
+          <article className="bg-white p-7 shadow-sm">
+            <div className="mb-8 flex items-center justify-between gap-4 border-b border-[var(--color-border)] pb-6">
+              <span className="bg-[var(--color-burgundy)] px-4 py-2 text-xs font-black uppercase tracking-[0.18em] text-white">
+                Featured
+              </span>
 
-            <span className="text-3xl font-black text-[#E7C0B3]">
-              {featuredProduct.price}
-            </span>
-          </div>
-
-          <div className="grid min-h-[260px] place-items-center rounded-[1.5rem] bg-gradient-to-br from-[#4A3A32] via-[#2F2924] to-[#171615] p-8 text-center">
-            <div>
-              <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-[#C9907A] text-[#171615]">
-                <GraduationCap size={34} />
-              </div>
-
-              <h2 className="mt-6 text-3xl font-black">
-                {featuredProduct.title}
-              </h2>
-
-              <p className="mt-4 text-sm leading-6 text-[#C8B8AA]">
-                {featuredProduct.description}
-              </p>
+              <span className="font-serif text-5xl text-[var(--color-burgundy)]">
+                {featuredProduct.price}
+              </span>
             </div>
-          </div>
 
-          <div className="mt-6 grid gap-3">
-            <ProductMeta
-              icon={<BookOpen size={18} />}
-              text={featuredProduct.format}
-            />
-            <ProductMeta
-              icon={<LockKeyhole size={18} />}
-              text={featuredProduct.access}
-            />
-          </div>
+            <div className="grid min-h-[280px] place-items-center bg-[var(--color-muted-surface)] p-8 text-center">
+              <div>
+                <div className="mx-auto grid h-16 w-16 place-items-center bg-[var(--color-burgundy)] text-white">
+                  <GraduationCap size={34} />
+                </div>
 
-          <button
-            type="button"
-            className="mt-6 w-full rounded-full bg-[#C9907A] px-6 py-4 text-sm font-black text-[#171615] transition hover:scale-[1.02]"
-          >
-            Preview Checkout
-          </button>
-        </article>
-      )}
+                <h2 className="mt-7 font-serif text-4xl text-[var(--color-text)]">
+                  {featuredProduct.title}
+                </h2>
+
+                <p className="mt-5 text-sm leading-7 text-[var(--color-muted-text)]">
+                  {featuredProduct.description}
+                </p>
+              </div>
+            </div>
+
+            <div className="mt-6 grid gap-3">
+              <ProductMeta
+                icon={<BookOpen size={18} />}
+                text={featuredProduct.format}
+              />
+              <ProductMeta
+                icon={<LockKeyhole size={18} />}
+                text={featuredProduct.access}
+              />
+            </div>
+
+            <button
+              type="button"
+              className="mt-6 w-full bg-[var(--color-burgundy)] px-6 py-4 text-xs font-black uppercase tracking-[0.18em] text-white transition hover:bg-[var(--color-burgundy-dark)]"
+            >
+              Preview Checkout
+            </button>
+          </article>
+        )}
+      </div>
     </section>
   );
 }
@@ -153,16 +155,16 @@ function ShopFilterSection({
   onSearchChange,
 }: ShopFilterSectionProps) {
   return (
-    <section className="mx-auto max-w-6xl px-5 py-10 md:px-6">
-      <div className="rounded-[2rem] border border-white/10 bg-[#25231F] p-5 shadow-xl md:p-6">
-        <div className="mb-5 flex items-center gap-3 text-[#C9907A]">
-          <Filter size={20} />
+    <section className="border-y border-[var(--color-border)] bg-white">
+      <div className="mx-auto max-w-7xl px-6 py-8">
+        <div className="mb-6 flex items-center gap-3 text-[var(--color-burgundy)]">
+          <Filter size={18} />
           <p className="text-xs font-black uppercase tracking-[0.25em]">
             Product Filters
           </p>
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+        <div className="grid gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-center">
           <div className="flex flex-wrap gap-3">
             {productCategories.map((category) => {
               const isActive = activeCategory === category;
@@ -172,10 +174,10 @@ function ShopFilterSection({
                   key={category}
                   type="button"
                   onClick={() => onCategoryChange(category)}
-                  className={`rounded-full px-5 py-3 text-sm font-black transition ${
+                  className={`px-5 py-3 text-xs font-black uppercase tracking-[0.18em] transition ${
                     isActive
-                      ? "bg-[#C9907A] text-[#171615]"
-                      : "border border-white/10 bg-[#171615] text-[#C8B8AA] hover:text-[#F7F0E8]"
+                      ? "bg-[var(--color-burgundy)] text-white"
+                      : "border border-[var(--color-border)] bg-transparent text-[var(--color-text)] hover:bg-[var(--color-bg)]"
                   }`}
                 >
                   {category}
@@ -187,8 +189,8 @@ function ShopFilterSection({
           <label className="relative block">
             <span className="sr-only">Search products</span>
             <Search
-              size={20}
-              className="absolute left-4 top-1/2 -translate-y-1/2 text-[#C8B8AA]"
+              size={18}
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--color-muted-text)]"
             />
 
             <input
@@ -196,7 +198,7 @@ function ShopFilterSection({
               value={searchTerm}
               onChange={(event) => onSearchChange(event.target.value)}
               placeholder="Search courses, e-books, templates..."
-              className="w-full rounded-full border border-white/10 bg-[#171615] py-3 pl-12 pr-5 text-sm font-semibold text-[#F7F0E8] outline-none placeholder:text-[#7F7166] focus:border-[#C9907A]"
+              className="w-full border border-[var(--color-border)] bg-[var(--color-bg)] py-3 pl-11 pr-5 text-sm text-[var(--color-text)] outline-none placeholder:text-[var(--color-muted-text)] focus:border-[var(--color-burgundy)]"
             />
           </label>
         </div>
@@ -211,27 +213,31 @@ type ProductGridSectionProps = {
 
 function ProductGridSection({ products }: ProductGridSectionProps) {
   return (
-    <section className="mx-auto max-w-6xl px-5 py-16 md:px-6 md:py-24">
-      <SectionHeader
-        eyebrow="Digital Products"
-        title="Clear offers, simple formats, instant value."
-        description="A strong shop page does not show random products. It separates courses, e-books, and templates so buyers understand what they are paying for."
-      />
+    <section className="bg-[var(--color-bg)]">
+      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
+        <SectionHeader
+          eyebrow="Digital Products"
+          title="Clear offers, simple formats, instant value."
+          description="A strong shop page does not show random products. It separates courses, e-books, and templates so buyers understand what they are paying for."
+        />
 
-      {products.length === 0 ? (
-        <div className="mt-10 rounded-[1.5rem] border border-white/10 bg-[#25231F] p-8 text-center">
-          <p className="text-lg font-black">No products found.</p>
-          <p className="mt-2 text-sm text-[#C8B8AA]">
-            Try another category or search term.
-          </p>
-        </div>
-      ) : (
-        <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      )}
+        {products.length === 0 ? (
+          <div className="mt-12 border border-[var(--color-border)] bg-white p-10 text-center">
+            <p className="font-serif text-3xl text-[var(--color-text)]">
+              No products found.
+            </p>
+            <p className="mt-3 text-[var(--color-muted-text)]">
+              Try another category or search term.
+            </p>
+          </div>
+        ) : (
+          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        )}
+      </div>
     </section>
   );
 }
@@ -244,38 +250,40 @@ function ProductCard({ product }: ProductCardProps) {
   const Icon = getProductIcon(product.category);
 
   return (
-    <article className="flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#25231F] shadow-xl transition hover:-translate-y-1 hover:border-[#C9907A]/50">
-      <div className="grid aspect-video place-items-center bg-gradient-to-br from-[#4A3A32] to-[#171615]">
-        <div className="grid h-16 w-16 place-items-center rounded-2xl bg-[#C9907A] text-[#171615]">
+    <article className="flex h-full flex-col border border-[var(--color-border)] bg-white transition hover:-translate-y-1">
+      <div className="grid aspect-video place-items-center bg-[var(--color-muted-surface)]">
+        <div className="grid h-16 w-16 place-items-center bg-[var(--color-burgundy)] text-white">
           <Icon size={32} />
         </div>
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
-          <span className="rounded-full bg-[#C9907A]/20 px-3 py-1 text-xs font-black uppercase tracking-wider text-[#E7C0B3]">
+      <div className="flex flex-1 flex-col p-7">
+        <div className="mb-5 flex items-center justify-between gap-4">
+          <span className="text-xs font-black uppercase tracking-[0.18em] text-[var(--color-burgundy)]">
             {product.category}
           </span>
 
-          <span className="text-2xl font-black text-[#E7C0B3]">
+          <span className="font-serif text-4xl text-[var(--color-burgundy)]">
             {product.price}
           </span>
         </div>
 
-        <h3 className="text-xl font-black leading-tight">{product.title}</h3>
+        <h3 className="font-serif text-3xl leading-tight text-[var(--color-text)]">
+          {product.title}
+        </h3>
 
-        <p className="mt-3 text-sm leading-6 text-[#C8B8AA]">
+        <p className="mt-4 text-sm leading-7 text-[var(--color-muted-text)]">
           {product.description}
         </p>
 
-        <div className="mt-6 grid gap-3">
+        <div className="mt-7 grid gap-3">
           <ProductMeta icon={<BookOpen size={18} />} text={product.format} />
           <ProductMeta icon={<Download size={18} />} text={product.access} />
         </div>
 
         <button
           type="button"
-          className="mt-auto w-full rounded-full border border-[#C9907A] px-5 py-3 text-sm font-black text-[#F7F0E8] transition hover:bg-[#C9907A] hover:text-[#171615]"
+          className="mt-auto w-full border border-[var(--color-burgundy)] px-5 py-3 text-xs font-black uppercase tracking-[0.18em] text-[var(--color-text)] transition hover:bg-[var(--color-burgundy)] hover:text-white"
         >
           View Product
         </button>
@@ -291,8 +299,8 @@ type ProductMetaProps = {
 
 function ProductMeta({ icon, text }: ProductMetaProps) {
   return (
-    <div className="flex items-center gap-3 rounded-2xl border border-white/10 bg-[#171615] px-4 py-3 text-sm font-bold text-[#C8B8AA]">
-      <span className="text-[#E7C0B3]">{icon}</span>
+    <div className="flex items-center gap-3 border border-[var(--color-border)] bg-[var(--color-bg)] px-4 py-3 text-sm text-[var(--color-muted-text)]">
+      <span className="text-[var(--color-burgundy)]">{icon}</span>
       <span>{text}</span>
     </div>
   );
@@ -307,35 +315,35 @@ function CheckoutTrustSection() {
   ];
 
   return (
-    <section className="mx-auto max-w-6xl px-5 py-16 md:px-6 md:py-24">
-      <div className="grid gap-8 rounded-[2rem] border border-white/10 bg-[#25231F] p-7 shadow-xl md:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+    <section className="bg-white">
+      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 md:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.25em] text-[#C9907A]">
+          <p className="text-xs font-black uppercase tracking-[0.35em] text-[var(--color-burgundy)]">
             Checkout Thinking
           </p>
 
-          <h2 className="mt-4 text-3xl font-black leading-tight md:text-5xl">
+          <h2 className="mt-5 font-serif text-4xl leading-tight text-[var(--color-text)] md:text-6xl">
             The shop must feel simple before it becomes powerful.
           </h2>
 
-          <p className="mt-5 leading-7 text-[#C8B8AA]">
+          <p className="mt-6 text-lg leading-8 text-[var(--color-muted-text)]">
             We are not adding real payments yet. First we design the buying
             hierarchy correctly: product type, value, price, access, and next
             action.
           </p>
         </div>
 
-        <div className="grid gap-3">
+        <div className="grid gap-4">
           {trustItems.map((item) => (
             <div
               key={item}
-              className="flex gap-4 rounded-2xl border border-white/10 bg-[#171615] p-5"
+              className="flex gap-4 border border-[var(--color-border)] bg-[var(--color-bg)] p-5"
             >
-              <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-[#C9907A]/20 text-[#E7C0B3]">
+              <div className="grid h-10 w-10 shrink-0 place-items-center border border-[var(--color-burgundy)] text-[var(--color-burgundy)]">
                 <Check size={20} />
               </div>
 
-              <p className="text-sm font-bold leading-6 text-[#F7F0E8]">
+              <p className="text-sm font-bold uppercase leading-6 tracking-[0.12em] text-[var(--color-text)]">
                 {item}
               </p>
             </div>
@@ -348,53 +356,26 @@ function CheckoutTrustSection() {
 
 function ShopManagerSection() {
   return (
-    <section className="mx-auto max-w-6xl px-5 py-16 md:px-6 md:py-24">
-      <div className="rounded-[2rem] border border-[#C9907A]/40 bg-[#C9907A] p-8 text-[#171615] shadow-xl md:p-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="mx-auto grid h-16 w-16 place-items-center rounded-2xl bg-[#171615] text-[#F7F0E8]">
-            <CreditCard size={32} />
-          </div>
-
-          <p className="mt-6 text-xs font-black uppercase tracking-[0.25em]">
-            Future Admin + Payments
-          </p>
-
-          <h2 className="mt-4 text-3xl font-black leading-tight md:text-5xl">
-            Later, the creator will manage products, prices, files, and sales.
-          </h2>
-
-          <p className="mx-auto mt-5 max-w-2xl leading-7 text-[#34241F]">
-            This frontend shop is the first layer. Later we connect the REST
-            API, database, admin panel, file uploads, and secure checkout.
-          </p>
-
-          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <ButtonLikeDark>Admin-ready structure</ButtonLikeDark>
-            <ButtonLikeOutline>Stripe later</ButtonLikeOutline>
-          </div>
+    <section className="bg-[#8C8279]">
+      <div className="mx-auto max-w-7xl px-6 py-20 text-center text-white md:py-24">
+        <div className="mx-auto grid h-16 w-16 place-items-center border border-white/40 text-white">
+          <CreditCard size={32} />
         </div>
+
+        <p className="mt-8 text-xs font-black uppercase tracking-[0.35em] text-white/80">
+          Future Admin + Payments
+        </p>
+
+        <h2 className="mx-auto mt-5 max-w-4xl font-serif text-4xl leading-tight md:text-6xl">
+          Later, the creator will manage products, prices, files, and sales.
+        </h2>
+
+        <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/80">
+          This frontend shop is the first layer. Later we connect the REST API,
+          database, admin panel, file uploads, and secure checkout.
+        </p>
       </div>
     </section>
-  );
-}
-
-type ButtonLikeProps = {
-  children: React.ReactNode;
-};
-
-function ButtonLikeDark({ children }: ButtonLikeProps) {
-  return (
-    <span className="rounded-full bg-[#171615] px-7 py-3.5 text-sm font-black text-[#F7F0E8]">
-      {children}
-    </span>
-  );
-}
-
-function ButtonLikeOutline({ children }: ButtonLikeProps) {
-  return (
-    <span className="rounded-full border border-[#171615] px-7 py-3.5 text-sm font-black">
-      {children}
-    </span>
   );
 }
 
