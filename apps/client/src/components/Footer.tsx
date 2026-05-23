@@ -8,39 +8,39 @@ const footerLinks = [
   { label: "Shop", path: "/shop" },
 ];
 
-const socialLinks = ["Youtube", "Instagram", "LinkedIn", "Facebook"];
+const socialLinks = ["YouTube", "Instagram", "LinkedIn", "Facebook"];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#171615]">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:px-6 md:py-16">
+    <footer className="border-t border-[var(--color-border)] bg-[var(--color-bg)]">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
         <div>
-          <Link to="/" className="flex items-center gap-3">
-            <span className="grid h-10 w-10 place-items-center rounded-full bg-[#C9907A] text-lg font-black text-[#171615]">
+          <Link to="/" className="inline-flex items-center gap-3">
+            <span className="font-serif text-4xl italic leading-none text-[var(--color-text)]">
               N
             </span>
-            <span className="text-lg font-black tracking-wide text-[#F7F0E8]">
+            <span className="text-xl font-semibold text-[var(--color-text)]">
               Neem
             </span>
           </Link>
 
-          <p className="mt-5 max-w-sm text-sm leading-7 text-[#C8B8AA]">
+          <p className="mt-6 max-w-sm text-sm leading-7 text-[var(--color-muted-text)]">
             A creator-owned healing channel for guided prayers, honest stories,
             daily routines, courses, and digital resources.
           </p>
         </div>
 
         <div>
-          <h2 className="text-sm font-black uppercase tracking-[0.25em] text-[#C9907A]">
+          <h2 className="text-xs font-black uppercase tracking-[0.3em] text-[var(--color-burgundy)]">
             Explore
           </h2>
 
-          <nav className="mt-5 grid gap-3">
+          <nav className="mt-6 grid gap-4">
             {footerLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-sm font-bold text-[#C8B8AA] transition hover:text-[#F7F0E8]"
+                className="text-sm font-bold uppercase tracking-[0.16em] text-[var(--color-text)] transition hover:text-[var(--color-burgundy)]"
               >
                 {link.label}
               </Link>
@@ -49,28 +49,27 @@ export default function Footer() {
         </div>
 
         <div>
-          <h2 className="text-sm font-black uppercase tracking-[0.25em] text-[#C9907A]">
+          <h2 className="text-xs font-black uppercase tracking-[0.3em] text-[var(--color-burgundy)]">
             Social
           </h2>
 
-          <div className="mt-5 flex flex-wrap gap-3">
+          <div className="mt-6 flex flex-wrap gap-3">
             {socialLinks.map((item) => (
               <button
                 key={item}
                 type="button"
                 aria-label={item}
-                className="grid h-11 w-11 place-items-center rounded-full border border-white/10 bg-[#25231F] text-[#C8B8AA] transition hover:border-[#C9907A] hover:text-[#F7F0E8]"
+                className="grid h-11 w-11 place-items-center border border-[var(--color-border)] bg-white text-[var(--color-muted-text)] transition hover:border-[var(--color-burgundy)] hover:text-[var(--color-burgundy)]"
               >
-                <ExternalLink size={20} />
+                <ExternalLink size={18} />
               </button>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="border-t border-white/10 px-5 py-5 text-center text-xs font-semibold text-[#7F7166]">
-        © {new Date().getFullYear()} Neem. Built as a full-stack creator
-        platform.
+      <div className="border-t border-[var(--color-border)] px-6 py-5 text-center text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-muted-text)]">
+        © {new Date().getFullYear()} Neem. Full-stack creator platform.
       </div>
     </footer>
   );

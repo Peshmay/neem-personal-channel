@@ -1,264 +1,169 @@
-import {
-  BookOpen,
-  CalendarCheck,
-  Headphones,
-  HeartHandshake,
-  Play,
-  Sparkles,
-  Video,
-} from "lucide-react";
-import {
-  dailyEssentials,
-  latestContent,
-  premiumResources,
-} from "../data/homeData";
 import ButtonLink from "../components/ui/ButtonLink";
-import FeatureCard from "../components/ui/FeatureCard";
-import SectionHeader from "../components/ui/SectionHeader";
-
-const essentialIcons = [Headphones, CalendarCheck, Sparkles];
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <DailyEssentialsSection />
-      <LatestContentSection />
-      <PremiumResourcesSection />
-      <SocialHighlightsSection />
+      <FeaturedStrip />
+      <IntroSection />
+      <OfferSection />
     </>
   );
 }
 
 function HeroSection() {
   return (
-    <section className="mx-auto grid min-h-[calc(100vh-73px)] max-w-6xl items-center gap-12 px-5 py-14 md:px-6 md:py-20 lg:grid-cols-[1.05fr_0.95fr]">
-      <div>
-        <p className="mb-4 text-xs font-black uppercase tracking-[0.28em] text-[#C9907A] md:text-sm">
-          Neem Healing Channel
-        </p>
+    <section className="bg-[#F8F7F5]">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-24">
+        <div className="relative">
+          <div className="absolute left-0 top-8 h-[420px] w-[420px] rounded-full bg-[#EFEDEA]" />
 
-        <h1 className="max-w-4xl text-4xl font-black leading-[1.05] md:text-6xl lg:text-7xl">
-          You are not alone on this healing journey.
-        </h1>
-
-        <p className="mt-6 max-w-2xl text-base leading-8 text-[#C8B8AA] md:text-lg">
-          A creator-owned sanctuary for guided prayers, healing stories, daily
-          routines, courses, and digital resources.
-        </p>
-
-        <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-          <ButtonLink to="/media">Watch Free Introduction</ButtonLink>
-          <ButtonLink to="/sanctuary" variant="secondary">
-            Start Daily Sanctuary
-          </ButtonLink>
-        </div>
-
-        <div className="mt-8 grid max-w-xl grid-cols-3 gap-3 text-center">
-          {[
-            ["Videos", "Healing stories"],
-            ["Audio", "Guided prayers"],
-            ["Courses", "Premium learning"],
-          ].map(([label, text]) => (
-            <div
-              key={label}
-              className="rounded-2xl border border-white/10 bg-[#25231F] p-4"
-            >
-              <p className="text-sm font-black text-[#F7F0E8]">{label}</p>
-              <p className="mt-1 text-xs text-[#C8B8AA]">{text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="rounded-[2rem] border border-white/10 bg-[#25231F] p-3 shadow-2xl md:p-4">
-        <div className="aspect-video rounded-[1.5rem] bg-gradient-to-br from-[#4A3A32] via-[#2F2924] to-[#171615]">
-          <div className="flex h-full items-center justify-center">
-            <button
-              type="button"
-              className="grid h-16 w-16 place-items-center rounded-full bg-[#C9907A] text-[#171615] shadow-xl transition hover:scale-105 md:h-20 md:w-20"
-              aria-label="Play introduction video"
-            >
-              <Play fill="currentColor" size={34} />
-            </button>
-          </div>
-        </div>
-
-        <div className="p-3 md:p-5">
-          <p className="text-xs font-black uppercase tracking-widest text-[#C9907A]">
-            Free Introduction
-          </p>
-
-          <h2 className="mt-2 text-2xl font-black">
-            Start here: your healing journey
-          </h2>
-
-          <p className="mt-3 text-sm leading-6 text-[#C8B8AA]">
-            A warm welcome video explaining the story, purpose, and daily rhythm
-            of Neem.
-          </p>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function DailyEssentialsSection() {
-  return (
-    <section
-      id="essentials"
-      className="mx-auto max-w-6xl px-5 py-16 md:px-6 md:py-24"
-    >
-      <SectionHeader
-        eyebrow="Daily Sanctuary"
-        title="Return every day for simple healing structure."
-        description="This is the habit-building part of the platform: prayer, reflection, and daily emotional grounding."
-      />
-
-      <div className="mt-10 grid gap-5 md:grid-cols-3">
-        {dailyEssentials.map((item, index) => {
-          const Icon = essentialIcons[index] ?? Sparkles;
-
-          return (
-            <FeatureCard
-              key={item.id}
-              icon={<Icon size={28} />}
-              title={item.title}
-              description={item.description}
+          <div className="relative z-10 overflow-hidden rounded-b-[220px] rounded-t-[220px]">
+            <img
+              src="/images/Neem-image.png"
+              alt="Neem founder"
+              className="h-full w-full object-cover"
             />
-          );
-        })}
-      </div>
-    </section>
-  );
-}
-
-function LatestContentSection() {
-  return (
-    <section
-      id="latest"
-      className="mx-auto max-w-6xl px-5 py-16 md:px-6 md:py-24"
-    >
-      <SectionHeader
-        eyebrow="Media Hub"
-        title="Latest videos, podcasts, and audio prayers."
-        description="A clean library for visitors to discover your teaching, testimony, and guided content."
-      />
-
-      <div className="mt-10 grid gap-5 lg:grid-cols-3">
-        {latestContent.map((item) => (
-          <article
-            key={item.id}
-            className="overflow-hidden rounded-[1.5rem] border border-white/10 bg-[#25231F] shadow-xl transition hover:-translate-y-1 hover:border-[#C9907A]/50"
-          >
-            <div className="aspect-video bg-gradient-to-br from-[#4A3A32] to-[#171615]">
-              <div className="flex h-full items-center justify-center">
-                <div className="grid h-14 w-14 place-items-center rounded-full bg-[#C9907A] text-[#171615]">
-                  {item.type === "Video" ? (
-                    <Video size={26} />
-                  ) : (
-                    <Headphones size={26} />
-                  )}
-                </div>
-              </div>
-            </div>
-
-            <div className="p-6">
-              <div className="mb-3 flex items-center justify-between gap-4 text-xs font-black uppercase tracking-widest text-[#C9907A]">
-                <span>{item.type}</span>
-                <span>{item.duration}</span>
-              </div>
-
-              <h3 className="text-xl font-black leading-tight">{item.title}</h3>
-
-              <p className="mt-3 text-sm leading-6 text-[#C8B8AA]">
-                {item.description}
-              </p>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function PremiumResourcesSection() {
-  return (
-    <section className="mx-auto max-w-6xl px-5 py-16 md:px-6 md:py-24">
-      <SectionHeader
-        eyebrow="Premium Resources"
-        title="Turn testimony and teaching into structured learning."
-        description="Courses, e-books, and templates make the platform more than a content feed. They create a real product ecosystem."
-        center
-      />
-
-      <div className="mt-10 grid gap-5 lg:grid-cols-2">
-        {premiumResources.map((item, index) => (
-          <article
-            key={item.id}
-            className="rounded-[2rem] border border-white/10 bg-[#25231F] p-7 shadow-xl md:p-8"
-          >
-            <div className="grid h-14 w-14 place-items-center rounded-2xl bg-[#C9907A]/20 text-[#E7C0B3]">
-              {index === 0 ? (
-                <HeartHandshake size={28} />
-              ) : (
-                <BookOpen size={28} />
-              )}
-            </div>
-
-            <p className="mt-6 text-xs font-black uppercase tracking-[0.25em] text-[#C9907A]">
-              Premium Resource
-            </p>
-
-            <h3 className="mt-3 text-3xl font-black">{item.title}</h3>
-
-            <p className="mt-4 max-w-xl leading-7 text-[#C8B8AA]">
-              {item.description}
-            </p>
-
-            <div className="mt-8">
-              <ButtonLink to="/shop">{item.cta}</ButtonLink>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-function SocialHighlightsSection() {
-  return (
-    <section className="mx-auto max-w-6xl px-5 py-16 md:px-6 md:py-24">
-      <div className="grid gap-8 rounded-[2rem] border border-white/10 bg-[#25231F] p-7 shadow-xl md:p-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div>
-          <p className="text-xs font-black uppercase tracking-[0.25em] text-[#C9907A]">
-            Social Highlights
-          </p>
-
-          <h2 className="mt-4 text-3xl font-black leading-tight md:text-5xl">
-            Social brings discovery. Neem keeps the journey organized.
-          </h2>
+          </div>
         </div>
 
         <div>
-          <p className="leading-7 text-[#C8B8AA]">
-            The website becomes the home base. Visitors can discover short
-            content on social media, then return here for prayers, courses,
-            resources, and structured support.
+          <p className="mb-6 text-xs font-black uppercase tracking-[0.35em] text-[#B98272]">
+            Neem Healing Channel
           </p>
 
-          <div className="mt-6 flex flex-wrap gap-3">
-            {["YouTube", "Instagram", "LinkedIn", "Facebook"].map(
-              (platform) => (
-                <span
-                  key={platform}
-                  className="rounded-full border border-white/10 bg-[#171615] px-4 py-2 text-xs font-black uppercase tracking-wider text-[#F7F0E8]"
-                >
-                  {platform}
-                </span>
-              ),
-            )}
+          <h1 className="max-w-4xl font-serif text-5xl leading-tight text-[#1A1A1A] md:text-6xl xl:text-7xl">
+            Embody your <span className="italic">healing</span> journey &amp;
+            establish your <span className="italic">peaceful</span> rhythm
+          </h1>
+
+          <p className="mt-8 max-w-xl text-lg leading-8 text-[#5F5A55]">
+            Gain the clarity, comfort, and encouragement you need through guided
+            prayers, healing stories, routines, and resources designed to
+            support your daily life.
+          </p>
+
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
+            <ButtonLink to="/sanctuary">Start Here</ButtonLink>
+            <ButtonLink to="/media" variant="secondary">
+              Learn More
+            </ButtonLink>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FeaturedStrip() {
+  return (
+    <section className="bg-[#8C8279]">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-6 py-5 text-center text-white md:flex-row md:text-left">
+        <p className="text-xs font-black uppercase tracking-[0.3em]">
+          Featured In
+        </p>
+
+        <div className="flex flex-wrap items-center justify-center gap-8 text-sm font-semibold text-white/90">
+          <span>Podcast Features</span>
+          <span>Healing Stories</span>
+          <span>Prayer Series</span>
+          <span>Digital Learning</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function IntroSection() {
+  return (
+    <section className="bg-[#F8F7F5]">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div className="rounded-[2rem] border border-[#E6DFD7] bg-white p-8 shadow-sm md:p-10">
+          <p className="text-xs font-black uppercase tracking-[0.35em] text-[#B98272]">
+            Neem
+          </p>
+
+          <h2 className="mt-4 font-serif text-4xl text-[#1A1A1A] md:text-5xl">
+            A calm space for healing, prayer, and rebuilding
+          </h2>
+
+          <p className="mt-6 text-base leading-8 text-[#5F5A55]">
+            Neem is for people who want more than scattered posts. It is a home
+            for gentle guidance, structured support, and a peaceful rhythm that
+            helps you return to yourself daily.
+          </p>
+
+          <div className="mt-8">
+            <ButtonLink to="/about" variant="secondary">
+              Read My Story
+            </ButtonLink>
+          </div>
+        </div>
+
+        <div className="overflow-hidden rounded-[2rem]">
+          <img
+            src="/images/Neem-image.png"
+            alt="Neem founder smiling"
+            className="h-full w-full object-cover"
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function OfferSection() {
+  const items = [
+    {
+      title: "Healing Media Hub",
+      text: "Browse videos, podcasts, guided prayers, and series in one calm library.",
+      link: "/media",
+    },
+    {
+      title: "Daily Sanctuary",
+      text: "Return each day for guided prayer, reflection, and healing habits.",
+      link: "/sanctuary",
+    },
+    {
+      title: "Courses & Resources",
+      text: "Explore premium learning, e-books, and templates for deeper support.",
+      link: "/shop",
+    },
+  ];
+
+  return (
+    <section className="bg-white">
+      <div className="mx-auto max-w-7xl px-6 py-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="font-serif text-4xl leading-tight text-[#1A1A1A] md:text-6xl">
+            Your healing path begins <span className="italic">here</span>
+          </h2>
+
+          <p className="mt-6 text-base leading-8 text-[#5F5A55]">
+            No matter what season you are in, Neem gives you a place to return,
+            reflect, and grow.
+          </p>
+        </div>
+
+        <div className="mt-14 grid gap-6 md:grid-cols-3">
+          {items.map((item) => (
+            <article
+              key={item.title}
+              className="rounded-t-[8rem] border border-[#E6DFD7] bg-[#EED8CE] px-6 pb-8 pt-12 text-center"
+            >
+              <h3 className="font-serif text-2xl text-[#1A1A1A]">
+                {item.title}
+              </h3>
+
+              <p className="mt-4 text-sm leading-7 text-[#5F5A55]">
+                {item.text}
+              </p>
+
+              <div className="mt-8">
+                <ButtonLink to={item.link}>Learn More</ButtonLink>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

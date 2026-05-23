@@ -12,11 +12,13 @@ export default function ButtonLink({
   variant = "primary",
 }: ButtonLinkProps) {
   const baseClasses =
-    "inline-flex items-center justify-center rounded-full px-7 py-3.5 text-sm font-black transition hover:scale-105";
+    "inline-flex items-center justify-center px-8 py-3 text-xs font-black uppercase tracking-[0.2em] transition";
 
   const variants = {
-    primary: "bg-[#C9907A] text-[#171615]",
-    secondary: "border border-[#C9907A] text-[#F7F0E8] hover:bg-[#25231F]",
+    primary:
+      "bg-[var(--color-burgundy)] text-white hover:bg-[var(--color-burgundy-dark)]",
+    secondary:
+      "border border-[#A9B0AE] bg-transparent text-[var(--color-text)] hover:bg-white",
   };
 
   return (
