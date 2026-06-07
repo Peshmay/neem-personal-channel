@@ -1,38 +1,37 @@
 import { Link } from "react-router-dom";
-import { ExternalLink } from "lucide-react";
 
 const footerLinks = [
-  { label: "My Story", path: "/about" },
-  { label: "Media Hub", path: "/media" },
-  { label: "Sanctuary", path: "/sanctuary" },
-  { label: "Shop", path: "/shop" },
+  { label: "About", path: "/about" },
+  { label: "Programs", path: "/shop" },
+  { label: "Media", path: "/media" },
+  { label: "Book a Call", path: "/sanctuary" },
 ];
 
-const socialLinks = ["YouTube", "Instagram", "LinkedIn", "Facebook"];
+const socialLinks = [
+  { label: "Instagram", href: "#" },
+  { label: "YouTube", href: "#" },
+  { label: "LinkedIn", href: "#" },
+  { label: "Email", href: "mailto:rsouveraine@hotmail.com" },
+];
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[var(--color-border)] bg-[var(--color-bg)]">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-[1.2fr_0.8fr_0.8fr]">
+    <footer className="bg-[var(--color-ink)]">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 text-white md:grid-cols-[2fr_1fr_1fr]">
         <div>
-          <Link to="/" className="inline-flex items-center gap-3">
-            <span className="font-serif text-4xl italic leading-none text-[var(--color-text)]">
-              N
-            </span>
-            <span className="text-xl font-semibold text-[var(--color-text)]">
-              Neem
-            </span>
-          </Link>
+          <div className="font-serif text-2xl font-light uppercase tracking-[0.16em]">
+            Neema Souveraine
+          </div>
 
-          <p className="mt-6 max-w-sm text-sm leading-7 text-[var(--color-muted-text)]">
-            A creator-owned healing channel for guided prayers, honest stories,
-            daily routines, courses, and digital resources.
+          <p className="mt-5 max-w-md text-sm font-light leading-7 text-white/45">
+            Coaching women entrepreneurs into identity-first leadership. Rooted
+            in purpose. Grounded in faith.
           </p>
         </div>
 
         <div>
-          <h2 className="text-xs font-black uppercase tracking-[0.3em] text-[var(--color-burgundy)]">
-            Explore
+          <h2 className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-gold)]">
+            Navigate
           </h2>
 
           <nav className="mt-6 grid gap-4">
@@ -40,7 +39,7 @@ export default function Footer() {
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-sm font-bold uppercase tracking-[0.16em] text-[var(--color-text)] transition hover:text-[var(--color-burgundy)]"
+                className="text-sm text-white/50 transition hover:text-[var(--color-gold)]"
               >
                 {link.label}
               </Link>
@@ -49,27 +48,34 @@ export default function Footer() {
         </div>
 
         <div>
-          <h2 className="text-xs font-black uppercase tracking-[0.3em] text-[var(--color-burgundy)]">
-            Social
+          <h2 className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-gold)]">
+            Connect
           </h2>
 
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="mt-6 grid gap-4">
             {socialLinks.map((item) => (
-              <button
-                key={item}
-                type="button"
-                aria-label={item}
-                className="grid h-11 w-11 place-items-center border border-[var(--color-border)] bg-white text-[var(--color-muted-text)] transition hover:border-[var(--color-burgundy)] hover:text-[var(--color-burgundy)]"
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-sm text-white/50 transition hover:text-[var(--color-gold)]"
               >
-                <ExternalLink size={18} />
-              </button>
+                {item.label}
+              </a>
             ))}
           </div>
         </div>
-      </div>
 
-      <div className="border-t border-[var(--color-border)] px-6 py-5 text-center text-xs font-semibold uppercase tracking-[0.16em] text-[var(--color-muted-text)]">
-        © {new Date().getFullYear()} Neem. Full-stack creator platform.
+        <div className="border-t border-white/10 pt-8 md:col-span-3">
+          <div className="flex flex-col justify-between gap-4 text-xs text-white/30 md:flex-row">
+            <p>
+              © {new Date().getFullYear()} Neema Souveraine. All rights
+              reserved.
+            </p>
+            <p className="uppercase tracking-[0.22em] text-[var(--color-gold)]">
+              She Leads Different ◆
+            </p>
+          </div>
+        </div>
       </div>
     </footer>
   );

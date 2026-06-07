@@ -4,10 +4,10 @@ import Footer from "../components/Footer";
 
 export default function PublicLayout() {
   return (
-    <div className="min-h-screen bg-[#F8F7F5] text-[#1A1A1A]">
+    <div className="min-h-screen bg-[var(--color-ivory)] text-[var(--color-ink)]">
       <Header />
 
-      <main className="pt-[78px]">
+      <main className="pt-[82px]">
         <Outlet />
       </main>
 

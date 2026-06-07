@@ -1,4 +1,4 @@
-export type ProductCategory = "All" | "Courses" | "E-books" | "Templates";
+export type ProductCategory = "All" | "Programs" | "Courses" | "Digital";
 
 export type ShopProduct = {
   id: number;
@@ -13,71 +13,51 @@ export type ShopProduct = {
 
 export const productCategories: ProductCategory[] = [
   "All",
+  "Programs",
   "Courses",
-  "E-books",
-  "Templates",
+  "Digital",
 ];
 
 export const shopProducts: ShopProduct[] = [
   {
     id: 1,
-    title: "Self-Love Healing Academy",
+    title: "She Leads Different",
     description:
-      "A structured course for rebuilding confidence, emotional rhythm, and spiritual strength.",
-    category: "Courses",
-    price: "€49",
-    format: "Video lessons + worksheets",
-    access: "Member access",
+      "A private coaching experience for the woman entrepreneur ready to step into identity-first leadership.",
+    category: "Programs",
+    price: "Apply",
+    format: "3-month private coaching",
+    access: "Application only",
     featured: true,
   },
   {
     id: 2,
-    title: "Seven Days of Inner Peace",
+    title: "Becoming HER Again",
     description:
-      "A guided e-book with daily prayers, reflection prompts, and healing exercises.",
-    category: "E-books",
-    price: "€12",
-    format: "PDF download",
-    access: "Instant download",
+      "A premium coaching experience for the woman who has everything except herself.",
+    category: "Programs",
+    price: "Apply",
+    format: "3-month premium experience",
+    access: "Application only",
   },
   {
     id: 3,
-    title: "Daily Prayer Journal Template",
+    title: "The Divine Reset",
     description:
-      "A printable template for tracking prayers, gratitude, emotions, and daily reflections.",
-    category: "Templates",
-    price: "€7",
-    format: "PDF template",
-    access: "Instant download",
+      "A four-phase digital program for women ready to start again from purpose, not pressure.",
+    category: "Courses",
+    price: "Coming Soon",
+    format: "Digital program",
+    access: "Application only",
   },
   {
     id: 4,
-    title: "Healing Routine Workbook",
+    title: "Identity-First Leadership Workbook",
     description:
-      "A practical workbook for building a simple routine around rest, prayer, and reflection.",
-    category: "E-books",
-    price: "€15",
+      "A guided workbook for women rebuilding leadership from identity, clarity, and faith.",
+    category: "Digital",
+    price: "Coming Soon",
     format: "PDF workbook",
-    access: "Instant download",
-  },
-  {
-    id: 5,
-    title: "Reflection Prompt Cards",
-    description:
-      "A digital card set with prompts for journaling, prayer groups, and quiet reflection.",
-    category: "Templates",
-    price: "€9",
-    format: "Digital cards",
-    access: "Instant download",
-  },
-  {
-    id: 6,
-    title: "Guided Prayer Mini Course",
-    description:
-      "Short lessons and audio guidance for building a consistent prayer practice.",
-    category: "Courses",
-    price: "€29",
-    format: "Lessons + audio",
-    access: "Member access",
+    access: "Instant download later",
   },
 ];

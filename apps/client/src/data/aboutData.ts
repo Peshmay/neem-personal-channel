@@ -1,21 +1,21 @@
 export const storyMilestones = [
   {
     id: 1,
-    title: "The beginning",
+    title: "The Calling",
     description:
-      "Neem started from a personal healing journey and a desire to create a safe place for people who feel unseen, tired, or spiritually empty.",
+      "Neema Souveraine was created for women who are successful on the outside but exhausted on the inside.",
   },
   {
     id: 2,
-    title: "The message",
+    title: "The Message",
     description:
-      "The heart of the platform is simple: healing needs rhythm, encouragement, prayer, honest stories, and practical tools.",
+      "The work is rooted in faith, identity, purpose, and the belief that women can lead differently.",
   },
   {
     id: 3,
-    title: "The platform",
+    title: "The Mission",
     description:
-      "Neem brings videos, podcasts, guided prayers, routines, courses, and digital resources into one owned space.",
+      "To help women entrepreneurs rebuild the foundation of who they are, how they lead, and what they were created for.",
   },
 ];
 
@@ -24,25 +24,25 @@ export const values = [
     id: 1,
     title: "Faith-led",
     description:
-      "Content is rooted in hope, prayer, reflection, and spiritual encouragement.",
+      "The work is grounded in purpose, spiritual conviction, and identity-first leadership.",
   },
   {
     id: 2,
-    title: "Human and honest",
+    title: "Purpose-driven",
     description:
-      "The tone is warm, personal, and grounded in real life instead of perfection.",
+      "Strategy matters, but the foundation begins with who the woman is becoming.",
   },
   {
     id: 3,
-    title: "Structured healing",
+    title: "Different leadership",
     description:
-      "The platform gives users simple daily steps, not just emotional inspiration.",
+      "Neema helps women stop copying leadership models that drain them and start leading from truth.",
   },
 ];
 
 export const audience = [
-  "People rebuilding after a difficult season",
-  "People seeking prayer, peace, and daily encouragement",
-  "People who want guided healing content in one calm place",
-  "People who prefer structured resources instead of endless social scrolling",
+  "Women entrepreneurs who feel successful but tired",
+  "Women who built through hustle but now need alignment",
+  "Women ready to lead from identity instead of pressure",
+  "Women seeking faith-rooted clarity, confidence, and purpose",
 ];
