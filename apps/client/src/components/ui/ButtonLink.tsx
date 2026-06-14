@@ -12,18 +12,39 @@ export default function ButtonLink({
   variant = "primary",
 }: ButtonLinkProps) {
   const baseClasses =
-    "inline-flex items-center justify-center px-8 py-3 text-xs font-semibold uppercase tracking-[0.22em] transition";
+    "group relative inline-flex items-center justify-center overflow-hidden text-xs font-semibold uppercase tracking-[0.22em] transition";
 
   const variants = {
-    primary: "bg-[var(--color-plum)] text-white hover:bg-[var(--color-gold)]",
+    primary: "bg-[var(--color-plum)] px-10 py-4 text-white hover:text-white",
     secondary:
-      "border border-[var(--color-gold)] bg-transparent text-[var(--color-plum)] hover:bg-[var(--color-gold)] hover:text-white",
-    gold: "bg-[var(--color-gold)] text-white hover:bg-[var(--color-plum)]",
+      "bg-transparent px-0 py-1 text-[var(--color-plum)] underline underline-offset-4 hover:text-[var(--color-gold)]",
+    gold: "bg-[var(--color-gold)] px-8 py-3 text-white hover:text-white",
   };
+
+  const slideColor =
+    variant === "primary"
+      ? "bg-[var(--color-gold)]"
+      : variant === "gold"
+        ? "bg-[var(--color-plum)]"
+        : "";
+
+  const hasSlide = variant === "primary" || variant === "gold";
+
+  const textColor =
+    variant === "secondary"
+      ? "text-[var(--color-plum)] group-hover:text-[var(--color-gold)]"
+      : "text-white";
 
   return (
     <Link to={to} className={`${baseClasses} ${variants[variant]}`}>
-      {children}
+      {hasSlide && (
+        <span
+          aria-hidden="true"
+          className={`absolute inset-0 -translate-x-full ${slideColor} transition-transform duration-500 group-hover:translate-x-0`}
+        />
+      )}
+
+      <span className={`relative z-10 ${textColor}`}>{children}</span>
     </Link>
   );
 }

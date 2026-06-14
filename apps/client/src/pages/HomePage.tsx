@@ -15,28 +15,30 @@ export default function HomePage() {
 function HeroSection() {
   return (
     <section className="grid min-h-[calc(100vh-82px)] bg-[var(--color-ivory)] lg:grid-cols-2">
-      <div className="flex flex-col justify-center px-6 py-20 md:px-16 lg:px-20">
-        <p className="mb-7 flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)] before:block before:h-px before:w-10 before:bg-[var(--color-gold)]">
+      <div className="flex flex-col justify-start px-6 pb-16 pt-24 md:px-16 md:pt-28 lg:px-20 lg:pt-32">
+        <p className="mb-7 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
           Coaching for Women Entrepreneurs
         </p>
 
-        <h1 className="font-serif text-6xl font-light leading-[1.05] text-[var(--color-plum)] md:text-7xl xl:text-8xl">
-          Lead with <br />
-          <em className="text-[var(--color-gold)]">Purpose.</em>
+        <h1 className="hero-headline mb-7">
+          Lead with
+          <br />
+          <em>Purpose.</em>
           <br />
           Lead Different.
         </h1>
 
-        <p className="mt-8 max-w-md text-base font-light leading-8 text-[var(--color-mist)]">
+        <p className="max-w-xl font-sans text-[1.1rem] font-light leading-[1.6] text-[var(--color-mist)]">
           You built the business. Now it is time to build the version of you who
-          leads it — with clarity, identity, and the kind of confidence that
-          does not burn out.
+          leads it with clarity, identity, and the kind of confidence that does
+          not burn out.
         </p>
 
-        <div className="mt-12 flex flex-col gap-4 sm:flex-row">
+        <div className="mt-12 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
           <ButtonLink to="/sanctuary">Book a Discovery Call</ButtonLink>
+
           <ButtonLink to="/shop" variant="secondary">
-            View Programs
+            View Programs →
           </ButtonLink>
         </div>
       </div>
@@ -52,14 +54,6 @@ function HeroSection() {
             event.currentTarget.style.display = "none";
           }}
         />
-
-        <div className="absolute inset-0 grid place-items-center">
-          <img
-            src="/images/neema-logo.jpg"
-            alt="Neema Souveraine logo"
-            className="max-h-72 w-auto object-contain opacity-90"
-          />
-        </div>
 
         <div className="absolute right-10 top-10 text-xs uppercase tracking-[0.28em] text-[var(--color-gold-light)] [writing-mode:vertical-rl]">
           She Leads Different
@@ -114,7 +108,7 @@ function AboutPreviewSection() {
         </p>
 
         <h2 className="font-serif text-5xl font-light leading-tight text-[var(--color-plum)] md:text-6xl">
-          Purpose is not something you find —
+          Purpose is not something you find
           <br />
           <em className="text-[var(--color-gold)]">it is who you are.</em>
         </h2>
@@ -122,7 +116,7 @@ function AboutPreviewSection() {
         <p className="mt-8 max-w-xl text-base font-light leading-8 text-[var(--color-mist)]">
           Neema works with women entrepreneurs who are successful on the outside
           but exhausted on the inside. Women who built through willpower and
-          hustle — and now feel ready to lead from identity, faith, and purpose.
+          hustle and now feel ready to lead from identity, faith, and purpose.
         </p>
 
         <div className="mt-10">
@@ -203,9 +197,11 @@ function ProgramsSection() {
                 {program.description}
               </p>
 
-              <ButtonLink to="/shop" variant="gold">
-                Apply Now
-              </ButtonLink>
+              <div className="mt-10">
+                <ButtonLink to="/shop" variant="gold">
+                  Apply Now
+                </ButtonLink>
+              </div>
             </article>
           ))}
         </div>
@@ -223,12 +219,12 @@ function TestimonialSection() {
         </div>
 
         <p className="font-serif text-3xl font-light italic leading-relaxed text-[var(--color-plum)] md:text-4xl">
-          Working with Neema did not just change my business — it changed how I
+          Working with Neema did not just change my business it changed how I
           see myself as a leader.
         </p>
 
         <p className="mt-8 text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-mist)]">
-          — Client Testimony
+          Client Testimony
         </p>
       </div>
     </section>
