@@ -1,13 +1,59 @@
 import { useMemo, useState } from "react";
-import { Headphones, Lock, Play, Search, Video } from "lucide-react";
-import {
-  mediaCategories,
-  mediaItems,
-  type MediaCategory,
-  type MediaItem,
-} from "../data/mediaData";
+import { Search } from "lucide-react";
 import ButtonLink from "../components/ui/ButtonLink";
-import SectionHeader from "../components/ui/SectionHeader";
+
+type MediaCategory = "All" | "Teaching" | "Podcast" | "Faith" | "Leadership";
+
+type MediaItem = {
+  id: number;
+  title: string;
+  description: string;
+  category: Exclude<MediaCategory, "All">;
+  duration: string;
+};
+
+const mediaCategories: MediaCategory[] = [
+  "All",
+  "Teaching",
+  "Podcast",
+  "Faith",
+  "Leadership",
+];
+
+const mediaItems: MediaItem[] = [
+  {
+    id: 1,
+    title: "Lead with Purpose",
+    description:
+      "A teaching on identity-first leadership and building from clarity instead of pressure.",
+    category: "Teaching",
+    duration: "12 min",
+  },
+  {
+    id: 2,
+    title: "Becoming HER Again",
+    description:
+      "A reflective conversation for women who are ready to return to themselves.",
+    category: "Podcast",
+    duration: "18 min",
+  },
+  {
+    id: 3,
+    title: "The Divine Reset",
+    description:
+      "A faith-rooted reset for women rebuilding their inner foundation.",
+    category: "Faith",
+    duration: "10 min",
+  },
+  {
+    id: 4,
+    title: "She Leads Different",
+    description:
+      "A leadership message for women entrepreneurs who are ready to lead without burnout.",
+    category: "Leadership",
+    duration: "15 min",
+  },
+];
 
 export default function MediaHubPage() {
   const [activeCategory, setActiveCategory] = useState<MediaCategory>("All");
@@ -30,11 +76,9 @@ export default function MediaHubPage() {
     });
   }, [activeCategory, searchTerm]);
 
-  const featuredItem = mediaItems.find((item) => item.featured);
-
   return (
     <>
-      <MediaHeroSection featuredItem={featuredItem} />
+      <MediaHeroSection />
       <MediaFilterSection
         activeCategory={activeCategory}
         searchTerm={searchTerm}
@@ -47,63 +91,26 @@ export default function MediaHubPage() {
   );
 }
 
-type MediaHeroSectionProps = {
-  featuredItem?: MediaItem;
-};
-
-function MediaHeroSection({ featuredItem }: MediaHeroSectionProps) {
+function MediaHeroSection() {
   return (
-    <section className="bg-[var(--color-bg)]">
-      <div className="mx-auto grid max-w-7xl gap-16 px-6 py-20 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:py-28">
-        <div>
-          <p className="mb-6 text-xs font-black uppercase tracking-[0.35em] text-[var(--color-burgundy)]">
-            Media Hub
-          </p>
+    <section className="bg-[var(--color-ivory)]">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-16 lg:px-20">
+        <p className="mb-7 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
+          Media
+        </p>
 
-          <h1 className="max-w-4xl font-serif text-5xl font-normal leading-tight text-[var(--color-text)] md:text-7xl">
-            Videos, podcasts, prayers, and series in one calm library.
-          </h1>
+        <h1 className="editorial-headline max-w-4xl">
+          Teachings,
+          <br />
+          conversations, and
+          <br />
+          <em>faith-rooted leadership.</em>
+        </h1>
 
-          <p className="mt-8 max-w-xl text-lg leading-8 text-[var(--color-muted-text)]">
-            Social media is for discovery. The Media Hub is where content
-            becomes organized, searchable, and easy to return to.
-          </p>
-
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <ButtonLink to="/sanctuary">Start Prayer</ButtonLink>
-            <ButtonLink to="/shop" variant="secondary">
-              View Resources
-            </ButtonLink>
-          </div>
-        </div>
-
-        {featuredItem && (
-          <article className="bg-white p-6 shadow-sm">
-            <div className="grid aspect-video place-items-center bg-[var(--color-muted-surface)]">
-              <button
-                type="button"
-                aria-label={`Play ${featuredItem.title}`}
-                className="grid h-20 w-20 place-items-center rounded-full bg-[var(--color-burgundy)] text-white shadow-lg transition hover:scale-105"
-              >
-                <Play fill="currentColor" size={34} />
-              </button>
-            </div>
-
-            <div className="pt-8">
-              <p className="text-xs font-black uppercase tracking-[0.3em] text-[var(--color-burgundy)]">
-                Featured Free Video
-              </p>
-
-              <h2 className="mt-4 font-serif text-4xl text-[var(--color-text)]">
-                {featuredItem.title}
-              </h2>
-
-              <p className="mt-4 text-base leading-8 text-[var(--color-muted-text)]">
-                {featuredItem.description}
-              </p>
-            </div>
-          </article>
-        )}
+        <p className="mt-8 max-w-2xl text-[0.95rem] font-light leading-[1.9] text-[var(--color-mist)]">
+          A calm library of content for women entrepreneurs ready to lead from
+          purpose, rebuild identity, and return to a grounded way of leading.
+        </p>
       </div>
     </section>
   );
@@ -123,8 +130,8 @@ function MediaFilterSection({
   onSearchChange,
 }: MediaFilterSectionProps) {
   return (
-    <section className="border-y border-[var(--color-border)] bg-white">
-      <div className="mx-auto grid max-w-7xl gap-6 px-6 py-8 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+    <section className="border-y border-[var(--color-champagne)] bg-white">
+      <div className="mx-auto grid max-w-7xl gap-6 px-6 py-8 md:px-16 lg:grid-cols-[1fr_0.8fr] lg:px-20">
         <div className="flex flex-wrap gap-3">
           {mediaCategories.map((category) => {
             const isActive = activeCategory === category;
@@ -134,10 +141,10 @@ function MediaFilterSection({
                 key={category}
                 type="button"
                 onClick={() => onCategoryChange(category)}
-                className={`px-5 py-3 text-xs font-black uppercase tracking-[0.18em] transition ${
+                className={`px-5 py-3 text-xs font-semibold uppercase tracking-[0.18em] transition ${
                   isActive
-                    ? "bg-[var(--color-burgundy)] text-white"
-                    : "border border-[var(--color-border)] bg-transparent text-[var(--color-text)] hover:bg-[var(--color-bg)]"
+                    ? "bg-[var(--color-plum)] text-white"
+                    : "border border-[var(--color-champagne)] text-[var(--color-plum)] hover:border-[var(--color-gold)]"
                 }`}
               >
                 {category}
@@ -147,18 +154,17 @@ function MediaFilterSection({
         </div>
 
         <label className="relative block">
-          <span className="sr-only">Search media</span>
           <Search
             size={18}
-            className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--color-muted-text)]"
+            className="absolute left-4 top-1/2 -translate-y-1/2 text-[var(--color-mist)]"
           />
 
           <input
             type="search"
             value={searchTerm}
             onChange={(event) => onSearchChange(event.target.value)}
-            placeholder="Search videos, prayers, podcasts..."
-            className="w-full border border-[var(--color-border)] bg-[var(--color-bg)] py-3 pl-11 pr-5 text-sm text-[var(--color-text)] outline-none placeholder:text-[var(--color-muted-text)] focus:border-[var(--color-burgundy)]"
+            placeholder="Search media..."
+            className="w-full border border-[var(--color-champagne)] bg-[var(--color-ivory)] py-3 pl-11 pr-5 text-sm text-[var(--color-plum)] outline-none focus:border-[var(--color-gold)]"
           />
         </label>
       </div>
@@ -172,117 +178,59 @@ type MediaGridSectionProps = {
 
 function MediaGridSection({ items }: MediaGridSectionProps) {
   return (
-    <section className="bg-[var(--color-bg)]">
-      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
-        <SectionHeader
-          eyebrow="Browse Library"
-          title="Choose the content that matches your current season."
-          description="Users should quickly understand what is free, what is member-only, and what type of content they are opening."
-        />
+    <section className="bg-[var(--color-ivory)] px-6 py-24 md:px-16 lg:px-20">
+      <div className="mx-auto grid max-w-7xl gap-px md:grid-cols-2 lg:grid-cols-4">
+        {items.map((item) => (
+          <article
+            key={item.id}
+            className="border border-[var(--color-champagne)] bg-white p-8 transition hover:bg-[var(--color-blush)]"
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-gold)]">
+              {item.category} • {item.duration}
+            </p>
 
-        {items.length === 0 ? (
-          <div className="mt-12 border border-[var(--color-border)] bg-white p-10 text-center">
-            <p className="font-serif text-3xl text-[var(--color-text)]">
-              No content found.
+            <h2 className="mt-8 font-serif text-3xl font-light leading-tight text-[var(--color-plum)]">
+              {item.title}
+            </h2>
+
+            <p className="mt-5 text-sm font-light leading-7 text-[var(--color-mist)]">
+              {item.description}
             </p>
-            <p className="mt-3 text-[var(--color-muted-text)]">
-              Try another category or search term.
-            </p>
-          </div>
-        ) : (
-          <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {items.map((item) => (
-              <MediaCard key={item.id} item={item} />
-            ))}
-          </div>
-        )}
+
+            <button
+              type="button"
+              className="mt-8 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-plum)] underline underline-offset-4 transition hover:text-[var(--color-gold)]"
+            >
+              Watch / Listen →
+            </button>
+          </article>
+        ))}
       </div>
     </section>
   );
 }
 
-type MediaCardProps = {
-  item: MediaItem;
-};
-
-function MediaCard({ item }: MediaCardProps) {
-  const isVideo = item.category === "Videos";
-  const isLocked = item.access === "Member";
-
-  return (
-    <article className="border border-[var(--color-border)] bg-white transition hover:-translate-y-1">
-      <div className="grid aspect-video place-items-center bg-[var(--color-muted-surface)]">
-        <div className="grid h-14 w-14 place-items-center bg-[var(--color-burgundy)] text-white">
-          {isVideo ? <Video size={25} /> : <Headphones size={25} />}
-        </div>
-      </div>
-
-      <div className="p-7">
-        <div className="mb-5 flex items-center justify-between gap-4 text-xs font-black uppercase tracking-[0.18em] text-[var(--color-burgundy)]">
-          <span>{item.category}</span>
-          <span>{item.duration}</span>
-        </div>
-
-        <h3 className="font-serif text-3xl leading-tight text-[var(--color-text)]">
-          {item.title}
-        </h3>
-
-        <p className="mt-4 text-sm leading-7 text-[var(--color-muted-text)]">
-          {item.description}
-        </p>
-
-        <div className="mt-8 flex items-center justify-between gap-3">
-          <span
-            className={`inline-flex items-center gap-2 px-3 py-2 text-xs font-black uppercase tracking-[0.16em] ${
-              isLocked
-                ? "bg-[var(--color-soft)] text-[var(--color-text)]"
-                : "bg-[var(--color-burgundy)] text-white"
-            }`}
-          >
-            {isLocked && <Lock size={14} />}
-            {item.access}
-          </span>
-
-          <button
-            type="button"
-            className="border border-[var(--color-border)] px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-[var(--color-text)] transition hover:border-[var(--color-burgundy)]"
-          >
-            {isLocked ? "Preview" : "Play"}
-          </button>
-        </div>
-      </div>
-    </article>
-  );
-}
-
 function MediaCtaSection() {
   return (
-    <section className="bg-[#8C8279]">
-      <div className="mx-auto grid max-w-7xl gap-10 px-6 py-20 text-white md:py-24 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div>
-          <p className="text-xs font-black uppercase tracking-[0.35em] text-white/80">
-            Why This Matters
-          </p>
+    <section className="bg-[var(--color-plum)] px-6 py-24 text-center md:px-16 lg:px-20">
+      <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold-light)]">
+        Continue the Journey
+      </p>
 
-          <h2 className="mt-5 font-serif text-4xl leading-tight md:text-6xl">
-            A real platform needs content structure, not just content.
-          </h2>
-        </div>
+      <h2 className="mx-auto max-w-4xl font-serif text-[clamp(3rem,5vw,4.8rem)] font-light leading-[1.12] tracking-[-0.01em] text-white">
+  Content gives insight.
+  <br />
+  Coaching creates
+  <br />
+  <em className="font-light italic text-[var(--color-gold-light)]">
+    transformation.
+  </em>
+</h2>
 
-        <div>
-          <p className="text-lg leading-8 text-white/80">
-            This page is the bridge between social discovery and user retention.
-            Visitors can search, filter, understand access level, and choose
-            what to watch or listen to next.
-          </p>
-
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <ButtonLink to="/sanctuary">Go to Sanctuary</ButtonLink>
-            <ButtonLink to="/shop" variant="secondary">
-              Explore Shop
-            </ButtonLink>
-          </div>
-        </div>
+      <div className="mt-12">
+        <ButtonLink to="/sanctuary" variant="gold">
+          Book a Discovery Call
+        </ButtonLink>
       </div>
     </section>
   );

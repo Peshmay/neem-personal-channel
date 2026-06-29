@@ -1,10 +1,5 @@
-import { Link } from "react-router-dom";
-import { Heart, ShieldCheck, Sparkles } from "lucide-react";
-import { audience, storyMilestones, values } from "../data/aboutData";
 import ButtonLink from "../components/ui/ButtonLink";
 import SectionHeader from "../components/ui/SectionHeader";
-
-const valueIcons = [Heart, Sparkles, ShieldCheck];
 
 export default function AboutPage() {
   return (
@@ -12,49 +7,65 @@ export default function AboutPage() {
       <AboutHeroSection />
       <StorySection />
       <ValuesSection />
-      <AudienceSection />
-      <TrustCtaSection />
+      <StatsSection />
+      <AboutCtaSection />
     </>
   );
 }
 
 function AboutHeroSection() {
   return (
-    <section className="bg-[var(--color-bg)]">
-      <div className="mx-auto grid max-w-7xl gap-16 px-6 py-20 lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:py-28">
+    <section className="bg-[var(--color-ivory)]">
+      <div className="mx-auto grid max-w-7xl gap-16 px-6 py-24 md:px-16 lg:grid-cols-2 lg:px-20">
         <div className="relative">
-          <div className="absolute left-8 top-8 h-[430px] w-[430px] rounded-full bg-[var(--color-soft)]" />
+          <div className="absolute -left-4 -top-4 h-full w-full border border-[var(--color-gold)]" />
 
-          <div className="relative z-10 overflow-hidden rounded-b-[220px] rounded-t-[220px]">
+          <div className="relative min-h-[560px] overflow-hidden bg-gradient-to-br from-[var(--color-blush)] to-[var(--color-champagne)]">
             <img
-              src="/images/Neem-image.png"
-              alt="Neem founder"
+              src="/images/neema-founder.jpg"
+              alt="Neema Souveraine"
               className="h-full w-full object-cover"
+              onError={(event) => {
+                event.currentTarget.style.display = "none";
+              }}
             />
+
+            <div className="absolute inset-0 grid place-items-center">
+              <span className="font-serif text-8xl font-light text-[rgba(61,26,79,0.18)]">
+                NS
+              </span>
+            </div>
           </div>
         </div>
 
-        <div>
-          <p className="mb-6 text-xs font-black uppercase tracking-[0.35em] text-[var(--color-burgundy)]">
-            My Story
+        <div className="flex flex-col justify-center">
+          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
+            About Neema
           </p>
 
-          <h1 className="max-w-4xl font-serif text-5xl font-normal leading-tight text-[var(--color-text)] md:text-7xl">
-            A calm space for <span className="italic">healing</span>, prayer,
-            and rebuilding.
+          <h1 className="font-serif text-[clamp(3rem,5vw,4.8rem)] font-light leading-[1.12] tracking-[-0.01em] text-[var(--color-plum)]">
+            Purpose is not something you find
+            <br />
+            <em className="font-light italic text-[var(--color-gold)]">
+              it is who you are.
+            </em>
           </h1>
 
-          <p className="mt-8 max-w-xl text-lg leading-8 text-[var(--color-muted-text)]">
-            Neem is built around one clear belief: people need more than
-            scattered social posts. They need a peaceful place where stories,
-            prayer, routines, and learning are organized with care.
+          <p className="mt-8 max-w-xl text-[0.95rem] font-light leading-[1.9] text-[var(--color-mist)]">
+            Neema works with women entrepreneurs who are successful on the
+            outside but exhausted on the inside. Women who built through
+            willpower and hustle and now feel ready to lead from identity,
+            faith, and purpose.
           </p>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <ButtonLink to="/sanctuary">Start Here</ButtonLink>
-            <ButtonLink to="/media" variant="secondary">
-              Explore Media
-            </ButtonLink>
+          <p className="mt-5 max-w-xl text-[0.95rem] font-light leading-[1.9] text-[var(--color-mist)]">
+            Her work is rooted in faith, identity, and the Proverbs 31
+            framework. This is not only strategy. It is a rebuilding of the
+            woman behind the business.
+          </p>
+
+          <div className="mt-10">
+            <ButtonLink to="/sanctuary">Book a Discovery Call</ButtonLink>
           </div>
         </div>
       </div>
@@ -65,30 +76,46 @@ function AboutHeroSection() {
 function StorySection() {
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
-        <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-16 lg:px-20">
+        <div className="grid gap-16 lg:grid-cols-[0.85fr_1.15fr]">
           <SectionHeader
-            eyebrow="The Journey"
-            title="This is not just content. It is a guided path."
-            description="The strongest creator platforms have a clear story. This page explains why Neem exists and why people should trust the voice behind it."
+            eyebrow="The Foundation"
+            title="Identity-first leadership for women who are ready to lead different."
+            description="The work begins with the woman, not only the business. Neema helps women reconnect with identity, purpose, faith, and leadership that does not require burnout."
           />
 
-          <div className="grid gap-6 md:grid-cols-3">
-            {storyMilestones.map((item, index) => (
+          <div className="grid gap-px md:grid-cols-3">
+            {[
+              {
+                number: "01",
+                title: "Faith",
+                text: "Grounded in spiritual conviction and the belief that leadership begins with alignment.",
+              },
+              {
+                number: "02",
+                title: "Identity",
+                text: "Helping women remember who they are before pressure, performance, and expectation.",
+              },
+              {
+                number: "03",
+                title: "Purpose",
+                text: "Rebuilding leadership from clarity, calling, and the courage to lead differently.",
+              },
+            ].map((item) => (
               <article
-                key={item.id}
-                className="border border-[var(--color-border)] bg-[var(--color-bg)] p-7"
+                key={item.number}
+                className="border border-[var(--color-champagne)] bg-[var(--color-ivory)] p-8"
               >
-                <div className="mb-8 font-serif text-5xl text-[var(--color-burgundy)]">
-                  0{index + 1}
+                <div className="font-serif text-6xl font-light text-[rgba(184,151,74,0.35)]">
+                  {item.number}
                 </div>
 
-                <h3 className="font-serif text-2xl text-[var(--color-text)]">
+                <h3 className="mt-8 font-serif text-3xl font-light text-[var(--color-plum)]">
                   {item.title}
                 </h3>
 
-                <p className="mt-4 text-sm leading-7 text-[var(--color-muted-text)]">
-                  {item.description}
+                <p className="mt-4 text-sm font-light leading-7 text-[var(--color-mist)]">
+                  {item.text}
                 </p>
               </article>
             ))}
@@ -101,110 +128,73 @@ function StorySection() {
 
 function ValuesSection() {
   return (
-    <section className="bg-[var(--color-bg)]">
-      <div className="mx-auto max-w-7xl px-6 py-20 md:py-28">
-        <SectionHeader
-          eyebrow="What Neem Stands For"
-          title="Warm, honest, structured support."
-          description="The brand should feel personal, but also organized enough to become a serious learning and membership platform."
-          center
-        />
-
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          {values.map((item, index) => {
-            const Icon = valueIcons[index] ?? Heart;
-
-            return (
-              <article
-                key={item.id}
-                className="rounded-t-[8rem] border border-[var(--color-border)] bg-[#EED8CE] px-7 pb-8 pt-14 text-center"
-              >
-                <div className="mx-auto mb-8 grid h-14 w-14 place-items-center border border-[var(--color-burgundy)] bg-white text-[var(--color-burgundy)]">
-                  <Icon size={26} />
-                </div>
-
-                <h3 className="font-serif text-2xl text-[var(--color-text)]">
-                  {item.title}
-                </h3>
-
-                <p className="mt-4 text-sm leading-7 text-[var(--color-muted-text)]">
-                  {item.description}
-                </p>
-              </article>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function AudienceSection() {
-  return (
-    <section className="bg-white">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-20 md:py-28 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-        <div>
-          <p className="text-xs font-black uppercase tracking-[0.35em] text-[var(--color-burgundy)]">
-            Who It Is For
-          </p>
-
-          <h2 className="mt-5 font-serif text-4xl leading-tight text-[var(--color-text)] md:text-6xl">
-            Built for people who need a calm place to return to.
-          </h2>
-
-          <p className="mt-6 text-lg leading-8 text-[var(--color-muted-text)]">
-            The audience is not looking for noise. They are looking for
-            guidance, peace, and something they can come back to every day.
-          </p>
-        </div>
-
-        <div className="grid gap-4">
-          {audience.map((item) => (
-            <div
-              key={item}
-              className="border border-[var(--color-border)] bg-[var(--color-bg)] p-6 text-sm font-bold uppercase tracking-[0.12em] text-[var(--color-text)]"
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function TrustCtaSection() {
-  return (
-    <section className="bg-[#8C8279]">
-      <div className="mx-auto max-w-7xl px-6 py-20 text-center text-white md:py-24">
-        <p className="text-xs font-black uppercase tracking-[0.35em] text-white/80">
-          Begin Here
+    <section className="bg-[var(--color-blush)]">
+      <div className="mx-auto max-w-7xl px-6 py-24 text-center md:px-16 lg:px-20">
+        <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
+          She Leads Different
         </p>
 
-        <h2 className="mx-auto mt-5 max-w-4xl font-serif text-4xl leading-tight md:text-6xl">
-          Start with one prayer, one story, one small daily step.
+        <h2 className="mx-auto max-w-4xl font-serif text-5xl font-light leading-tight text-[var(--color-plum)] md:text-6xl">
+          A woman can build, lead, and grow without losing herself.
         </h2>
 
-        <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-white/80">
-          The goal is not to overwhelm people. The goal is to help them take the
-          next honest step.
+        <p className="mx-auto mt-8 max-w-2xl text-base font-light leading-8 text-[var(--color-mist)]">
+          Neema Souveraine exists for the woman who is ready to stop performing
+          leadership and start embodying it.
         </p>
+      </div>
+    </section>
+  );
+}
 
-        <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
-          <Link
-            to="/sanctuary"
-            className="bg-[var(--color-burgundy)] px-8 py-3 text-xs font-black uppercase tracking-[0.2em] text-white transition hover:bg-[var(--color-burgundy-dark)]"
-          >
-            Enter Sanctuary
-          </Link>
+function StatsSection() {
+  const stats = [
+    { number: "15+", label: "Years Experience" },
+    { number: "6", label: "Languages" },
+    { number: "3", label: "Signature Programs" },
+  ];
 
-          <Link
-            to="/media"
-            className="border border-white px-8 py-3 text-xs font-black uppercase tracking-[0.2em] text-white transition hover:bg-white hover:text-[var(--color-text)]"
+  return (
+    <section className="bg-[var(--color-ivory)]">
+      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-3 md:px-16 lg:px-20">
+        {stats.map((stat) => (
+          <div
+            key={stat.label}
+            className="border-t border-[var(--color-champagne)] pt-8"
           >
-            Watch Free Content
-          </Link>
-        </div>
+            <div className="font-serif text-6xl font-light text-[var(--color-plum)]">
+              {stat.number}
+            </div>
+            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-mist)]">
+              {stat.label}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function AboutCtaSection() {
+  return (
+    <section className="bg-[var(--color-plum)] px-6 py-24 text-center md:px-16 lg:px-20">
+      <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold-light)]">
+        Your Next Chapter
+      </p>
+
+      <h2 className="mx-auto max-w-4xl font-serif text-5xl font-light leading-tight text-white md:text-6xl">
+        Lead from purpose, not pressure.
+      </h2>
+
+      <p className="mx-auto mt-8 max-w-2xl text-base font-light leading-8 text-white/60">
+        A discovery call is the first step toward understanding where you are,
+        where you want to go, and whether this work is the right fit.
+      </p>
+
+      <div className="mt-12">
+        <ButtonLink to="/sanctuary" variant="gold">
+          Book a Discovery Call
+        </ButtonLink>
       </div>
     </section>
   );
