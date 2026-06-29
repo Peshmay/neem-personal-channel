@@ -1,13 +1,20 @@
 import ButtonLink from "../components/ui/ButtonLink";
 import SectionHeader from "../components/ui/SectionHeader";
+import {
+  audience,
+  founderStory,
+  storyMilestones,
+  values,
+} from "../data/aboutData";
 
 export default function AboutPage() {
   return (
     <>
       <AboutHeroSection />
+      <FounderStorySection />
       <StorySection />
       <ValuesSection />
-      <StatsSection />
+      <AudienceSection />
       <AboutCtaSection />
     </>
   );
@@ -30,38 +37,27 @@ function AboutHeroSection() {
               }}
             />
 
-            <div className="absolute inset-0 grid place-items-center">
-              <span className="font-serif text-8xl font-light text-[rgba(61,26,79,0.18)]">
-                NS
-              </span>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-br from-[rgba(61,26,79,0.18)] to-[rgba(184,151,74,0.08)]" />
           </div>
         </div>
 
         <div className="flex flex-col justify-center">
-          <p className="mb-6 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
-            About Neema
+          <p className="mb-7 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
+            {founderStory.eyebrow}
           </p>
 
-          <h1 className="font-serif text-[clamp(3rem,5vw,4.8rem)] font-light leading-[1.12] tracking-[-0.01em] text-[var(--color-plum)]">
-            Purpose is not something you find
+          <h1 className="editorial-headline max-w-4xl">
+            {founderStory.headlineTop}
             <br />
-            <em className="font-light italic text-[var(--color-gold)]">
-              it is who you are.
-            </em>
+            <em>{founderStory.headlineEmphasis}</em>
           </h1>
 
-          <p className="mt-8 max-w-xl text-[0.95rem] font-light leading-[1.9] text-[var(--color-mist)]">
-            Neema works with women entrepreneurs who are successful on the
-            outside but exhausted on the inside. Women who built through
-            willpower and hustle and now feel ready to lead from identity,
-            faith, and purpose.
+          <p className="mt-8 max-w-xl font-serif text-3xl font-light text-[var(--color-plum)]">
+            {founderStory.intro}
           </p>
 
-          <p className="mt-5 max-w-xl text-[0.95rem] font-light leading-[1.9] text-[var(--color-mist)]">
-            Her work is rooted in faith, identity, and the Proverbs 31
-            framework. This is not only strategy. It is a rebuilding of the
-            woman behind the business.
+          <p className="mt-6 max-w-xl text-[0.95rem] font-light leading-[1.9] text-[var(--color-mist)]">
+            {founderStory.paragraphs[0]}
           </p>
 
           <div className="mt-10">
@@ -73,9 +69,40 @@ function AboutHeroSection() {
   );
 }
 
-function StorySection() {
+function FounderStorySection() {
   return (
     <section className="bg-white">
+      <div className="mx-auto grid max-w-7xl gap-16 px-6 py-24 md:px-16 lg:grid-cols-[0.75fr_1.25fr] lg:px-20">
+        <div>
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
+            Her Story
+          </p>
+
+          <h2 className="editorial-headline max-w-3xl">
+            The honest work of
+            <br />
+            <em>coming back.</em>
+          </h2>
+        </div>
+
+        <div className="space-y-7">
+          {founderStory.paragraphs.slice(1).map((paragraph) => (
+            <p
+              key={paragraph}
+              className="max-w-3xl text-base font-light leading-[1.95] text-[var(--color-mist)]"
+            >
+              {paragraph}
+            </p>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function StorySection() {
+  return (
+    <section className="bg-[var(--color-ivory)]">
       <div className="mx-auto max-w-7xl px-6 py-24 md:px-16 lg:px-20">
         <div className="grid gap-16 lg:grid-cols-[0.85fr_1.15fr]">
           <SectionHeader
@@ -85,29 +112,13 @@ function StorySection() {
           />
 
           <div className="grid gap-px md:grid-cols-3">
-            {[
-              {
-                number: "01",
-                title: "Faith",
-                text: "Grounded in spiritual conviction and the belief that leadership begins with alignment.",
-              },
-              {
-                number: "02",
-                title: "Identity",
-                text: "Helping women remember who they are before pressure, performance, and expectation.",
-              },
-              {
-                number: "03",
-                title: "Purpose",
-                text: "Rebuilding leadership from clarity, calling, and the courage to lead differently.",
-              },
-            ].map((item) => (
+            {storyMilestones.map((item, index) => (
               <article
-                key={item.number}
-                className="border border-[var(--color-champagne)] bg-[var(--color-ivory)] p-8"
+                key={item.id}
+                className="border border-[var(--color-champagne)] bg-white p-8"
               >
                 <div className="font-serif text-6xl font-light text-[rgba(184,151,74,0.35)]">
-                  {item.number}
+                  0{index + 1}
                 </div>
 
                 <h3 className="mt-8 font-serif text-3xl font-light text-[var(--color-plum)]">
@@ -115,7 +126,7 @@ function StorySection() {
                 </h3>
 
                 <p className="mt-4 text-sm font-light leading-7 text-[var(--color-mist)]">
-                  {item.text}
+                  {item.description}
                 </p>
               </article>
             ))}
@@ -129,47 +140,70 @@ function StorySection() {
 function ValuesSection() {
   return (
     <section className="bg-[var(--color-blush)]">
-      <div className="mx-auto max-w-7xl px-6 py-24 text-center md:px-16 lg:px-20">
-        <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
-          She Leads Different
-        </p>
+      <div className="mx-auto max-w-7xl px-6 py-24 md:px-16 lg:px-20">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
+            She Leads Different
+          </p>
 
-        <h2 className="mx-auto max-w-4xl font-serif text-5xl font-light leading-tight text-[var(--color-plum)] md:text-6xl">
-          A woman can build, lead, and grow without losing herself.
-        </h2>
+          <h2 className="editorial-headline mx-auto max-w-4xl">
+            No judgment.
+            <br />
+            No performing.
+            <br />
+            <em>A real way forward.</em>
+          </h2>
+        </div>
 
-        <p className="mx-auto mt-8 max-w-2xl text-base font-light leading-8 text-[var(--color-mist)]">
-          Neema Souveraine exists for the woman who is ready to stop performing
-          leadership and start embodying it.
-        </p>
+        <div className="mt-16 grid gap-px md:grid-cols-3">
+          {values.map((item) => (
+            <article
+              key={item.id}
+              className="border border-[var(--color-champagne)] bg-white p-8 text-center"
+            >
+              <h3 className="font-serif text-3xl font-light text-[var(--color-plum)]">
+                {item.title}
+              </h3>
+
+              <p className="mt-5 text-sm font-light leading-7 text-[var(--color-mist)]">
+                {item.description}
+              </p>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );
 }
 
-function StatsSection() {
-  const stats = [
-    { number: "15+", label: "Years Experience" },
-    { number: "6", label: "Languages" },
-    { number: "3", label: "Signature Programs" },
-  ];
-
+function AudienceSection() {
   return (
-    <section className="bg-[var(--color-ivory)]">
-      <div className="mx-auto grid max-w-7xl gap-8 px-6 py-20 md:grid-cols-3 md:px-16 lg:px-20">
-        {stats.map((stat) => (
-          <div
-            key={stat.label}
-            className="border-t border-[var(--color-champagne)] pt-8"
-          >
-            <div className="font-serif text-6xl font-light text-[var(--color-plum)]">
-              {stat.number}
+    <section className="bg-white">
+      <div className="mx-auto grid max-w-7xl gap-16 px-6 py-24 md:px-16 lg:grid-cols-[0.9fr_1.1fr] lg:px-20">
+        <div>
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
+            Who It Is For
+          </p>
+
+          <h2 className="editorial-headline max-w-4xl">
+            If you saw yourself
+            <br />
+            anywhere in this,
+            <br />
+            <em>you are already home.</em>
+          </h2>
+        </div>
+
+        <div className="grid gap-4">
+          {audience.map((item) => (
+            <div
+              key={item}
+              className="border border-[var(--color-champagne)] bg-[var(--color-ivory)] p-6 text-sm font-semibold uppercase leading-7 tracking-[0.12em] text-[var(--color-plum)]"
+            >
+              {item}
             </div>
-            <p className="mt-3 text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-mist)]">
-              {stat.label}
-            </p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -182,13 +216,17 @@ function AboutCtaSection() {
         Your Next Chapter
       </p>
 
-      <h2 className="mx-auto max-w-4xl font-serif text-5xl font-light leading-tight text-white md:text-6xl">
-        Lead from purpose, not pressure.
+      <h2 className="mx-auto max-w-4xl font-serif text-[clamp(3rem,5vw,4.8rem)] font-light leading-[1.12] tracking-[-0.01em] text-white">
+        Come home to the woman
+        <br />
+        <em className="font-light italic text-[var(--color-gold-light)]">
+          you were always meant to be.
+        </em>
       </h2>
 
       <p className="mx-auto mt-8 max-w-2xl text-base font-light leading-8 text-white/60">
-        A discovery call is the first step toward understanding where you are,
-        where you want to go, and whether this work is the right fit.
+        If you are ready for the honest work of returning to yourself, the first
+        step is a conversation.
       </p>
 
       <div className="mt-12">
