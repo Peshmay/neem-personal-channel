@@ -14,57 +14,64 @@ export default function HomePage() {
 
 function HeroSection() {
   return (
-    <section className="grid min-h-[calc(100vh-82px)] bg-[var(--color-ivory)] lg:grid-cols-2">
-      <div className="flex flex-col justify-start px-6 pb-16 pt-24 md:px-16 md:pt-28 lg:px-20 lg:pt-32">
-        <p className="mb-7 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
-          Coaching for Women Entrepreneurs
-        </p>
+    <section className="relative overflow-hidden bg-[#FBF7F2]">
+      <div className="absolute left-0 top-0 h-full w-[58%] bg-[#F4E9EE]" />
+      <div className="absolute left-[48%] top-20 hidden h-[520px] w-[520px] rounded-full bg-[rgba(184,151,74,0.08)] blur-3xl lg:block" />
 
-        <h1 className="hero-headline mb-7">
-          Lead with
-          <br />
-          <em>Purpose.</em>
-          <br />
-          Lead Different.
-        </h1>
+      <div className="relative mx-auto grid min-h-[calc(100vh-82px)] max-w-7xl items-center gap-10 px-6 py-16 md:px-16 lg:grid-cols-[0.92fr_1.08fr] lg:px-20">
+        <div className="relative z-20 max-w-2xl lg:-mr-20">
+          <div className="bg-[rgba(251,247,242,0.72)] px-0 py-8 backdrop-blur-[2px] lg:px-0">
+            <p className="mb-7 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
+              Coaching for Women Entrepreneurs
+            </p>
 
-        <p className="max-w-xl font-sans text-[1.1rem] font-light leading-[1.6] text-[var(--color-mist)]">
-          You built the business. Now it is time to build the version of you who
-          leads it with clarity, identity, and the kind of confidence that does
-          not burn out.
-        </p>
+            <h1 className="editorial-headline mb-7 max-w-4xl">
+              Lead with <br />
+              <em>Purpose.</em>
+              <br />
+              Lead Different.
+            </h1>
 
-        <div className="mt-12 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
-          <ButtonLink to="/sanctuary">Book a Discovery Call</ButtonLink>
+            <p className="max-w-xl text-[0.95rem] font-light leading-[1.9] tracking-wide text-[var(--color-mist)]">
+              You built the business. Now it is time to build the version of you
+              who leads it with clarity, identity, and the kind of confidence
+              that does not burn out.
+            </p>
 
-          <ButtonLink to="/shop" variant="secondary">
-            View Programs →
-          </ButtonLink>
-        </div>
-      </div>
+            <div className="mt-12 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+              <ButtonLink to="/sanctuary">Book a Discovery Call</ButtonLink>
 
-      <div className="relative min-h-[520px] overflow-hidden bg-[var(--color-plum)]">
-        <div className="absolute inset-0 bg-gradient-to-br from-[rgba(61,26,79,0.55)] to-[rgba(184,151,74,0.18)]" />
-
-        <img
-          src="/images/neema-founder.jpg"
-          alt="Neema Souveraine"
-          className="h-full w-full object-cover opacity-80"
-          onError={(event) => {
-            event.currentTarget.style.display = "none";
-          }}
-        />
-
-        <div className="absolute right-10 top-10 text-xs uppercase tracking-[0.28em] text-[var(--color-gold-light)] [writing-mode:vertical-rl]">
-          She Leads Different
+              <ButtonLink to="/shop" variant="secondary">
+                View Programs
+              </ButtonLink>
+            </div>
+          </div>
         </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--color-gold)] via-[var(--color-gold-light)] to-[var(--color-gold)]" />
+        <div className="relative min-h-[620px] overflow-hidden rounded-tl-[12rem] bg-[var(--color-plum)] shadow-[0_30px_80px_rgba(61,26,79,0.16)] lg:-ml-8">
+          <div className="absolute inset-0 z-10 bg-gradient-to-br from-[rgba(61,26,79,0.28)] via-transparent to-[rgba(184,151,74,0.22)]" />
+
+          <img
+            src="/images/neema-founder.jpg"
+            alt="Neema Souveraine"
+            className="h-full w-full object-cover opacity-[0.92] contrast-[0.96] saturate-[0.92]"
+            onError={(event) => {
+              event.currentTarget.style.display = "none";
+            }}
+          />
+
+          <div className="pointer-events-none absolute inset-0 z-20 opacity-[0.08] [background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.8)_1px,transparent_0)] [background-size:6px_6px]" />
+
+          <div className="absolute right-8 top-10 z-30 text-xs uppercase tracking-[0.28em] text-[var(--color-gold-light)] [writing-mode:vertical-rl]">
+            She Leads Different
+          </div>
+
+          <div className="absolute bottom-0 left-0 right-0 z-30 h-1 bg-gradient-to-r from-transparent via-[var(--color-gold)] to-transparent" />
+        </div>
       </div>
     </section>
   );
 }
-
 function MarqueeStrip() {
   const items = [
     "She Leads Different",
@@ -75,14 +82,15 @@ function MarqueeStrip() {
   ];
 
   return (
-    <section className="overflow-hidden bg-[var(--color-plum)] py-5">
+    <section className="overflow-hidden border-y border-[var(--color-champagne)] bg-[var(--color-ivory)] py-5">
       <div className="flex min-w-max gap-10 whitespace-nowrap">
         {[...items, ...items].map((item, index) => (
           <span
             key={`${item}-${index}`}
-            className="font-serif text-xl italic tracking-[0.08em] text-[var(--color-gold-light)]"
+            className="text-xs font-medium uppercase tracking-[0.3em] text-[rgba(61,26,79,0.62)]"
           >
-            {item} <span className="mx-8 text-[var(--color-gold)]">◆</span>
+            {item}
+            <span className="mx-8 text-[rgba(184,151,74,0.75)]">|</span>
           </span>
         ))}
       </div>
@@ -92,37 +100,52 @@ function MarqueeStrip() {
 
 function AboutPreviewSection() {
   return (
-    <section className="grid gap-16 bg-[var(--color-ivory)] px-6 py-24 md:px-16 lg:grid-cols-2 lg:px-20">
-      <div className="relative">
-        <div className="absolute -left-4 -top-4 h-full w-full border border-[var(--color-gold)]" />
-        <div className="relative grid aspect-[3/4] place-items-center bg-gradient-to-br from-[var(--color-blush)] to-[var(--color-champagne)]">
-          <span className="font-serif text-8xl font-light text-[rgba(61,26,79,0.18)]">
-            NS
-          </span>
+    <section className="relative overflow-hidden bg-[var(--color-ivory)] px-6 py-24 md:px-16 lg:px-20">
+      <div className="absolute right-0 top-0 h-full w-[45%] bg-[var(--color-blush)]" />
+
+      <div className="relative mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[0.95fr_1.05fr]">
+        <div className="relative">
+          <div className="absolute -left-4 -top-4 h-full w-full border border-[var(--color-gold)]" />
+
+          <div className="relative aspect-[3/4] overflow-hidden rounded-tr-[9rem] bg-[var(--color-blush)] shadow-[0_28px_80px_rgba(61,26,79,0.12)]">
+            <img
+              src="/images/neema-about.jpg"
+              alt="Neema Souveraine portrait"
+              className="h-full w-full object-cover object-center opacity-95 contrast-[0.98] saturate-[0.92]"
+              onError={(event) => {
+                event.currentTarget.style.display = "none";
+              }}
+            />
+
+            <div className="absolute inset-0 bg-gradient-to-br from-[rgba(61,26,79,0.08)] via-transparent to-[rgba(184,151,74,0.16)]" />
+          </div>
         </div>
-      </div>
 
-      <div className="flex flex-col justify-center">
-        <p className="mb-6 flex items-center gap-4 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)] before:block before:h-px before:w-10 before:bg-[var(--color-gold)]">
-          About Neema
-        </p>
+        <div className="relative z-10 bg-[rgba(250,247,242,0.82)] px-0 py-8 backdrop-blur-[2px] lg:-ml-20 lg:px-14 lg:py-14">
+          <p className="mb-7 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
+            About Neema
+          </p>
 
-        <h2 className="font-serif text-5xl font-light leading-tight text-[var(--color-plum)] md:text-6xl">
-          Purpose is not something you find
-          <br />
-          <em className="text-[var(--color-gold)]">it is who you are.</em>
-        </h2>
+          <h2 className="editorial-headline max-w-4xl">
+            Purpose is not
+            <br />
+            something you find
+            <br />
+            <em>it is who you are.</em>
+          </h2>
 
-        <p className="mt-8 max-w-xl text-base font-light leading-8 text-[var(--color-mist)]">
-          Neema works with women entrepreneurs who are successful on the outside
-          but exhausted on the inside. Women who built through willpower and
-          hustle and now feel ready to lead from identity, faith, and purpose.
-        </p>
+          <p className="mt-8 max-w-2xl text-base font-normal leading-[1.9] text-[var(--color-plum)]/85">
+            Neema works with women entrepreneurs who are successful on the
+            outside but exhausted on the inside. Women who built through
+            willpower and hustle and now feel ready to lead from identity,
+            faith, and purpose.
+          </p>
 
-        <div className="mt-10">
-          <ButtonLink to="/about" variant="secondary">
-            Read the Story
-          </ButtonLink>
+          <div className="mt-10">
+            <ButtonLink to="/about" variant="secondary">
+              Read the Story →
+            </ButtonLink>
+          </div>
         </div>
       </div>
     </section>

@@ -12,12 +12,12 @@ export default function ButtonLink({
   variant = "primary",
 }: ButtonLinkProps) {
   const baseClasses =
-    "group relative inline-flex items-center justify-center overflow-hidden text-xs font-semibold uppercase tracking-[0.22em] transition";
+    "group relative inline-flex items-center justify-center overflow-hidden text-xs font-medium uppercase tracking-[0.22em] transition";
 
   const variants = {
     primary: "bg-[var(--color-plum)] px-10 py-4 text-white hover:text-white",
     secondary:
-      "bg-transparent px-0 py-1 text-[var(--color-plum)] underline underline-offset-4 hover:text-[var(--color-gold)]",
+      "bg-transparent px-0 py-1 text-[rgba(61,26,79,0.78)] underline underline-offset-4 decoration-[rgba(61,26,79,0.35)] hover:text-[var(--color-gold)] hover:decoration-[var(--color-gold)]",
     gold: "bg-[var(--color-gold)] px-8 py-3 text-white hover:text-white",
   };
 
@@ -32,7 +32,7 @@ export default function ButtonLink({
 
   const textColor =
     variant === "secondary"
-      ? "text-[var(--color-plum)] group-hover:text-[var(--color-gold)]"
+      ? "text-[rgba(61,26,79,0.78)] group-hover:text-[var(--color-gold)]"
       : "text-white";
 
   return (
