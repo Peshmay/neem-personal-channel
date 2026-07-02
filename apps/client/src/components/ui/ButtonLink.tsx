@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 type ButtonLinkProps = {
   to: string;
   children: React.ReactNode;
-  variant?: "primary" | "secondary" | "gold" | "outline";
+  variant?: "primary" | "secondary" | "gold" | "outline" | "light";
 };
 
 export default function ButtonLink({
@@ -21,6 +21,8 @@ export default function ButtonLink({
     gold: "bg-[var(--color-gold)] px-8 py-3 text-white hover:text-white",
     outline:
       "border border-[rgba(61,26,79,0.28)] bg-transparent px-10 py-4 text-[var(--color-plum)] hover:border-[var(--color-plum)] hover:bg-[rgba(61,26,79,0.04)]",
+    light:
+      "bg-white px-10 py-4 text-[var(--color-plum)] hover:bg-[var(--color-plum)] hover:text-white",
   };
 
   const slideColor =
@@ -37,7 +39,9 @@ export default function ButtonLink({
       ? "text-[rgba(61,26,79,0.78)] group-hover:text-[var(--color-gold)]"
       : variant === "outline"
         ? "text-[var(--color-plum)]"
-        : "text-white";
+        : variant === "light"
+          ? "text-[var(--color-plum)] group-hover:text-white"
+          : "text-white";
 
   return (
     <Link to={to} className={`${baseClasses} ${variants[variant]}`}>
