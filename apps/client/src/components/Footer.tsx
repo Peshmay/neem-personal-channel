@@ -16,14 +16,14 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--color-ink)]">
-      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 text-white md:grid-cols-[2fr_1fr_1fr]">
+    <footer className="border-t border-[var(--color-champagne)] bg-[var(--color-ivory)]">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-[2fr_1fr_1fr] md:px-16 lg:px-20">
         <div>
-          <div className="font-serif text-2xl font-light uppercase tracking-[0.16em]">
+          <div className="font-serif text-2xl font-light uppercase tracking-[0.16em] text-[var(--color-plum)]">
             Neema Souveraine
           </div>
 
-          <p className="mt-5 max-w-md text-sm font-light leading-7 text-white/45">
+          <p className="mt-5 max-w-md text-sm font-normal leading-7 text-[rgba(61,26,79,0.68)]">
             Coaching women entrepreneurs into identity-first leadership. Rooted
             in purpose. Grounded in faith.
           </p>
@@ -39,7 +39,7 @@ export default function Footer() {
               <Link
                 key={link.path}
                 to={link.path}
-                className="text-sm text-white/50 transition hover:text-[var(--color-gold)]"
+                className="text-sm font-normal text-[rgba(61,26,79,0.68)] transition hover:text-[var(--color-gold)]"
               >
                 {link.label}
               </Link>
@@ -57,7 +57,7 @@ export default function Footer() {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-sm text-white/50 transition hover:text-[var(--color-gold)]"
+                className="text-sm font-normal text-[rgba(61,26,79,0.68)] transition hover:text-[var(--color-gold)]"
               >
                 {item.label}
               </a>
@@ -65,14 +65,15 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-8 md:col-span-3">
-          <div className="flex flex-col justify-between gap-4 text-xs text-white/30 md:flex-row">
+        <div className="border-t border-[var(--color-champagne)] pt-8 md:col-span-3">
+          <div className="flex flex-col justify-between gap-4 text-xs text-[rgba(61,26,79,0.55)] md:flex-row">
             <p>
               © {new Date().getFullYear()} Neema Souveraine. All rights
               reserved.
             </p>
+
             <p className="uppercase tracking-[0.22em] text-[var(--color-gold)]">
-              She Leads Different ◆
+              She Leads Different
             </p>
           </div>
         </div>

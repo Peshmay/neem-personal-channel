@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import { Search } from "lucide-react";
 import ButtonLink from "../components/ui/ButtonLink";
 
-type MediaCategory = "All" | "Teaching" | "Podcast" | "Faith" | "Leadership";
+type MediaCategory = "All" | "Teaching" | "Faith" | "Leadership";
 
 type MediaItem = {
   id: number;
@@ -15,7 +15,6 @@ type MediaItem = {
 const mediaCategories: MediaCategory[] = [
   "All",
   "Teaching",
-  "Podcast",
   "Faith",
   "Leadership",
 ];
@@ -34,7 +33,7 @@ const mediaItems: MediaItem[] = [
     title: "Becoming HER Again",
     description:
       "A reflective conversation for women who are ready to return to themselves.",
-    category: "Podcast",
+    category: "Teaching",
     duration: "18 min",
   },
   {
@@ -218,14 +217,14 @@ function MediaCtaSection() {
       </p>
 
       <h2 className="mx-auto max-w-4xl font-serif text-[clamp(3rem,5vw,4.8rem)] font-light leading-[1.12] tracking-[-0.01em] text-white">
-  Content gives insight.
-  <br />
-  Coaching creates
-  <br />
-  <em className="font-light italic text-[var(--color-gold-light)]">
-    transformation.
-  </em>
-</h2>
+        Content gives insight.
+        <br />
+        Coaching creates
+        <br />
+        <em className="font-light italic text-[var(--color-gold-light)]">
+          transformation.
+        </em>
+      </h2>
 
       <div className="mt-12">
         <ButtonLink to="/sanctuary" variant="gold">
