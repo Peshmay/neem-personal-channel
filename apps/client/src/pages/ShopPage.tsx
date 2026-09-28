@@ -5,6 +5,7 @@ const programs = [
     number: "01",
     title: "She Leads Different",
     duration: "3-Month Private Coaching",
+    price: "Apply / price on request",
     description:
       "For the woman entrepreneur ready to step into identity-first leadership and move from burnout and over-functioning into grounded clarity.",
     bestFor:
@@ -14,6 +15,7 @@ const programs = [
     number: "02",
     title: "Becoming HER Again",
     duration: "3-Month Premium Experience",
+    price: "Apply / price on request",
     description:
       "A high-touch private coaching experience for the woman who has everything except herself and is ready to reclaim who she was made to be.",
     bestFor:
@@ -23,6 +25,7 @@ const programs = [
     number: "03",
     title: "The Divine Reset",
     duration: "4-Phase Digital Program",
+    price: "Apply / price on request",
     description:
       "An application-only digital experience for the woman ready to start again from purpose, not pressure.",
     bestFor:
@@ -91,6 +94,10 @@ function ProgramsGridSection() {
 
               <p className="mt-4 text-[0.65rem] font-semibold uppercase tracking-[0.25em] text-[var(--color-gold-light)]">
                 {program.duration}
+              </p>
+
+              <p className="mt-3 text-sm font-semibold uppercase tracking-[0.16em] text-white">
+                {program.price}
               </p>
 
               {/* Increased text weight from font-light to font-normal, increased opacity for readability */}

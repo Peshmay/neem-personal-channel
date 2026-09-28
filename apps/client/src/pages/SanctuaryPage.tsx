@@ -1,9 +1,40 @@
 import ButtonLink from "../components/ui/ButtonLink";
 
+const callOptions = [
+  {
+    title: "Discovery Call",
+    duration: "30 minutes",
+    price: "Free",
+    description:
+      "A gentle first conversation to understand where you are and whether this work is the right fit.",
+    cta: "Book Free Call",
+    paymentRequired: false,
+  },
+  {
+    title: "Strategy Call",
+    duration: "60 minutes",
+    price: "750 SEK",
+    description:
+      "A deeper paid session for clarity, direction, and next steps in your life, business, or leadership.",
+    cta: "Pay & Book",
+    paymentRequired: true,
+  },
+  {
+    title: "Deep Dive Call",
+    duration: "90 minutes",
+    price: "1,200 SEK",
+    description:
+      "An extended paid session for women who want more space to unpack, reset, and create a grounded way forward.",
+    cta: "Pay & Book",
+    paymentRequired: true,
+  },
+];
+
 export default function SanctuaryPage() {
   return (
     <>
       <BookingHeroSection />
+      <CallOptionsSection />
       <BookingFormSection />
       <BookingNoteSection />
     </>
@@ -31,6 +62,74 @@ function BookingHeroSection() {
           honest conversation about where you are, where you want to go, and
           whether this work is the right fit.
         </p>
+      </div>
+    </section>
+  );
+}
+
+function CallOptionsSection() {
+  return (
+    <section className="bg-white px-6 py-24 md:px-16 lg:px-20">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-14 max-w-3xl">
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
+            Choose Your Call
+          </p>
+
+          <h2 className="editorial-headline max-w-4xl">
+            Start free.
+            <br />
+            Go deeper
+            <br />
+            <em>when you are ready.</em>
+          </h2>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-3">
+          {callOptions.map((option) => (
+            <article
+              key={option.title}
+              className="border border-[var(--color-champagne)] bg-[var(--color-ivory)] p-8"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-[var(--color-gold)]">
+                {option.duration}
+              </p>
+
+              <h3 className="mt-6 font-serif text-3xl font-light text-[var(--color-plum)]">
+                {option.title}
+              </h3>
+
+              <p className="mt-4 text-2xl font-semibold text-[var(--color-plum)]">
+                {option.price}
+              </p>
+
+              <p className="mt-6 text-sm font-normal leading-7 text-[rgba(61,26,79,0.72)]">
+                {option.description}
+              </p>
+
+              <div className="mt-8">
+                {option.paymentRequired ? (
+                  <button
+                    type="button"
+                    className="w-full border border-[var(--color-plum)] px-6 py-4 text-xs font-semibold uppercase tracking-[0.22em] text-[var(--color-plum)] transition hover:bg-[var(--color-plum)] hover:text-white"
+                  >
+                    {option.cta}
+                  </button>
+                ) : (
+                  <ButtonLink to="/sanctuary" variant="outline">
+                    {option.cta}
+                  </ButtonLink>
+                )}
+              </div>
+
+              {option.paymentRequired && (
+                <p className="mt-4 text-xs font-normal leading-6 text-[rgba(61,26,79,0.55)]">
+                  Payment options later: Klarna or PayPal.
+                </p>
+              )}
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

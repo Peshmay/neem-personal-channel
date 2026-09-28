@@ -26,6 +26,7 @@ const mediaItems: MediaItem[] = [
     description:
       "A teaching on identity-first leadership and building from clarity instead of pressure.",
     category: "Teaching",
+    
     duration: "12 min",
   },
   {
