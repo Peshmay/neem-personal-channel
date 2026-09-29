@@ -4,31 +4,30 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <MarqueeStrip />
+
       <AboutPreviewSection />
       <ProgramsSection />
       <TestimonialSection />
     </>
   );
 }
+
 function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-[#FBF7F2]">
       <div className="absolute left-0 top-0 hidden h-full w-[58%] bg-[#F4E9EE] lg:block" />
       <div className="absolute left-[48%] top-20 hidden h-[520px] w-[520px] rounded-full bg-[rgba(184,151,74,0.08)] blur-3xl lg:block" />
 
-      <div className="relative mx-auto flex max-w-7xl flex-col px-6 py-10 md:px-16 lg:grid lg:min-h-[calc(100vh-82px)] lg:grid-cols-[0.92fr_1.08fr] lg:items-center lg:gap-10 lg:px-20 lg:py-16">
-        {/* Image first on mobile */}
-        <div className="relative order-1 min-h-[430px] overflow-hidden rounded-t-[14rem] bg-[var(--color-plum)] shadow-[0_30px_80px_rgba(61,26,79,0.16)] md:min-h-[560px] md:rounded-t-[18rem] lg:order-2 lg:-ml-8 lg:min-h-[620px] lg:rounded-t-[18rem]">
+      <div className="relative mx-auto flex max-w-7xl flex-col px-6 py-10 md:px-16 lg:grid lg:h-[calc(100svh-82px)] lg:max-h-[900px] lg:min-h-[600px] lg:grid-cols-[0.95fr_1.05fr] lg:items-center lg:gap-10 lg:px-20 lg:pb-4 lg:pt-8">
+        {/* Image */}
+        <div className="relative order-1 h-[430px] overflow-hidden rounded-t-[14rem] bg-[var(--color-plum)] shadow-[0_30px_80px_rgba(61,26,79,0.16)] md:h-[560px] md:rounded-t-[18rem] lg:order-2 lg:-ml-8 lg:h-[calc(100svh-82px-3rem)] lg:max-h-[860px] lg:self-end lg:rounded-t-[16rem]">
           <div className="absolute inset-0 z-10 bg-gradient-to-br from-[rgba(61,26,79,0.28)] via-transparent to-[rgba(184,151,74,0.22)]" />
 
           <img
             src="/images/neema-founder.jpg"
             alt="Neema Souveraine"
-            className="h-full w-full object-cover object-[50%_42%] opacity-[0.92] contrast-[0.96] saturate-[0.92]"
-            onError={(event) => {
-              event.currentTarget.style.display = "none";
-            }}
+            className="h-full w-full object-cover object-[50%_35%] opacity-[0.92] contrast-[0.96] saturate-[0.92]"
+            onError={(e) => (e.currentTarget.style.display = "none")}
           />
 
           <div className="pointer-events-none absolute inset-0 z-20 opacity-[0.08] [background-image:radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.8)_1px,transparent_0)] [background-size:6px_6px]" />
@@ -40,62 +39,34 @@ function HeroSection() {
           <div className="absolute bottom-0 left-0 right-0 z-30 h-1 bg-gradient-to-r from-transparent via-[var(--color-gold)] to-transparent" />
         </div>
 
-        {/* Text second on mobile */}
+        {/* Text */}
         <div className="relative z-20 order-2 mt-10 max-w-2xl lg:order-1 lg:-mr-16 lg:mt-0">
-          <div className="bg-[rgba(251,247,242,0.78)] px-8 py-8 backdrop-blur-[2px] md:px-12 lg:px-16 lg:py-14">
-            <p className="mb-7 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
+          <div className="bg-[rgba(251,247,242,0.78)] px-8 py-8 backdrop-blur-[2px] md:px-12 lg:px-12 lg:py-10 xl:px-16">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
               Coaching for Women Entrepreneurs
             </p>
 
-            <h1 className="editorial-headline mb-7 max-w-4xl">
+            <h1 className="editorial-headline mb-6 max-w-4xl lg:text-[clamp(2.75rem,6.5vh,4.75rem)] lg:leading-[1.05]">
               Lead with <br />
               <em>Purpose.</em>
               <br />
               Lead Different.
             </h1>
 
-            <p className="max-w-xl text-[0.95rem] font-light leading-[1.9] tracking-wide text-[var(--color-mist)]">
+            <p className="max-w-xl text-[0.95rem] font-light leading-[1.8] tracking-wide text-[var(--color-mist)]">
               You built the business. Now it is time to build the version of you
               who leads it with clarity, identity, and the kind of confidence
               that does not burn out.
             </p>
 
-            <div className="mt-10 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+            <div className="mt-8 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
               <ButtonLink to="/sanctuary">Book a Discovery Call</ButtonLink>
-
               <ButtonLink to="/shop" variant="secondary">
                 View Programs
               </ButtonLink>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-}
-
-function MarqueeStrip() {
-  const items = [
-    "She Leads Different",
-    "Becoming HER Again",
-    "The Divine Reset",
-    "Identity-First Leadership",
-    "Proverbs 31 Framework",
-  ];
-
-  return (
-    <section className="overflow-hidden border-y border-[var(--color-champagne)] bg-[var(--color-ivory)] py-5">
-      <div className="flex min-w-max gap-10 whitespace-nowrap">
-        {[...items, ...items].map((item, index) => (
-          <span
-            key={`${item}-${index}`}
-            className="text-xs font-semibold uppercase tracking-[0.3em] text-[rgba(61,26,79,0.8)]"
-          >
-            {item}
-            {/* Changed from heavy pipe to a clean bullet point */}
-            <span className="mx-8 text-[rgba(184,151,74,0.75)]">•</span>
-          </span>
-        ))}
       </div>
     </section>
   );
