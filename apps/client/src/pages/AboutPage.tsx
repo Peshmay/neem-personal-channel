@@ -20,15 +20,15 @@ export default function AboutPage() {
   );
 }
 
+
 function AboutHeroSection() {
   return (
     <section className="relative overflow-hidden bg-[var(--color-ivory)]">
       <div className="absolute left-0 top-0 hidden h-full w-[42%] bg-[var(--color-blush)]/40 lg:block" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-16 px-6 py-20 md:px-16 md:py-24 lg:grid-cols-[0.92fr_1.08fr] lg:gap-24 lg:px-20 lg:py-28">
+      <div className="relative mx-auto grid max-w-7xl items-center gap-14 px-6 py-14 md:px-16 md:py-16 lg:min-h-[calc(100svh-82px)] lg:grid-cols-[0.92fr_1.08fr] lg:gap-20 lg:px-20 lg:py-14">
         <div className="relative">
-          {/* Removed the Canva-style dots and harsh borders for a clean, soft editorial crop */}
-          <div className="relative aspect-[4/5] overflow-hidden rounded-t-[16rem] bg-[var(--color-blush)] shadow-[0_20px_60px_rgba(61,26,79,0.08)]">
+          <div className="relative aspect-[4/5] max-h-[650px] overflow-hidden rounded-t-[16rem] bg-[var(--color-blush)] shadow-[0_20px_60px_rgba(61,26,79,0.08)]">
             <img
               src="/images/neema-about.jpg"
               alt="Neema Souveraine portrait"
@@ -37,12 +37,13 @@ function AboutHeroSection() {
                 event.currentTarget.style.display = "none";
               }}
             />
+
             <div className="absolute inset-0 bg-gradient-to-br from-[rgba(61,26,79,0.04)] via-transparent to-[rgba(184,151,74,0.08)]" />
           </div>
         </div>
 
-        <div className="flex flex-col items-start">
-          <p className="mb-7 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
+        <div className="flex max-w-[680px] flex-col items-start">
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
             {founderStory.eyebrow}
           </p>
 
@@ -54,15 +55,15 @@ function AboutHeroSection() {
             <em>you were always meant to be.</em>
           </h1>
 
-          <p className="mt-12 max-w-xl font-serif text-3xl font-light text-[var(--color-plum)]">
+          <p className="mt-8 max-w-xl font-serif text-3xl font-light text-[var(--color-plum)]">
             {founderStory.intro}
           </p>
 
-          <p className="mt-7 max-w-2xl text-[0.95rem] font-normal leading-[1.95] text-[var(--color-plum)]/80">
+          <p className="mt-5 max-w-2xl text-[0.95rem] font-normal leading-[1.8] text-[var(--color-plum)]/80">
             {founderStory.paragraphs[0]}
           </p>
 
-          <div className="mt-12">
+          <div className="mt-8">
             <ButtonLink to="/sanctuary">Book a Discovery Call</ButtonLink>
           </div>
         </div>

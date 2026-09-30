@@ -4,7 +4,6 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-
       <AboutPreviewSection />
       <ProgramsSection />
       <TestimonialSection />
@@ -71,35 +70,33 @@ function HeroSection() {
     </section>
   );
 }
-
 function AboutPreviewSection() {
   return (
-    <section className="relative overflow-hidden bg-[var(--color-ivory)] px-6 py-24 md:px-16 lg:px-20">
+    <section
+      id="about"
+      className="relative scroll-mt-[82px] overflow-hidden bg-[var(--color-ivory)] px-6 py-16 md:px-16 lg:flex lg:h-[calc(100svh-82px)] lg:max-h-[900px] lg:min-h-[600px] lg:items-center lg:px-20 lg:py-8"
+    >
       <div className="absolute right-0 top-0 h-full w-[45%] bg-[var(--color-blush)]" />
 
-      <div className="relative mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[0.95fr_1.05fr]">
+      <div className="relative mx-auto grid w-full max-w-7xl items-center gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <div className="relative">
-          {/* Removed the offset gold outline box that looked like a Canva template */}
-          <div className="relative aspect-[3/4] overflow-hidden rounded-t-[12rem] bg-[var(--color-blush)] shadow-[0_28px_80px_rgba(61,26,79,0.12)]">
+          <div className="relative aspect-[3/4] overflow-hidden rounded-t-[12rem] bg-[var(--color-blush)] shadow-[0_28px_80px_rgba(61,26,79,0.12)] lg:aspect-auto lg:h-[calc(100svh-82px-4rem)] lg:max-h-[820px]">
             <img
               src="/images/neema-about.jpg"
               alt="Neema Souveraine portrait"
-              className="h-full w-full object-cover object-center opacity-95 contrast-[0.98] saturate-[0.92]"
-              onError={(event) => {
-                event.currentTarget.style.display = "none";
-              }}
+              className="h-full w-full object-cover object-[50%_30%] opacity-95 contrast-[0.98] saturate-[0.92]"
+              onError={(e) => (e.currentTarget.style.display = "none")}
             />
-
             <div className="absolute inset-0 bg-gradient-to-br from-[rgba(61,26,79,0.08)] via-transparent to-[rgba(184,151,74,0.16)]" />
           </div>
         </div>
 
-        <div className="relative z-10 bg-[rgba(250,247,242,0.9)] px-6 py-10 shadow-sm backdrop-blur-sm lg:-ml-20 lg:px-14 lg:py-14">
-          <p className="mb-7 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
+        <div className="relative z-10 bg-[rgba(250,247,242,0.9)] px-6 py-10 shadow-sm backdrop-blur-sm lg:-ml-20 lg:px-12 lg:py-10 xl:px-14">
+          <p className="mb-5 text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-gold)]">
             About Neema
           </p>
 
-          <h2 className="editorial-headline max-w-4xl">
+          <h2 className="editorial-headline max-w-4xl lg:text-[clamp(2.5rem,6vh,4.5rem)] lg:leading-[1.05]">
             Purpose is not
             <br />
             something you find
@@ -107,14 +104,14 @@ function AboutPreviewSection() {
             <em>it is who you are.</em>
           </h2>
 
-          <p className="mt-8 max-w-2xl text-base font-normal leading-[1.9] text-[var(--color-plum)]">
+          <p className="mt-6 max-w-2xl text-base font-normal leading-[1.8] text-[var(--color-plum)]">
             Neema works with women entrepreneurs who are successful on the
             outside but exhausted on the inside. Women who built through
             willpower and hustle and now feel ready to lead from identity,
             faith, and purpose.
           </p>
 
-          <div className="mt-10">
+          <div className="mt-8">
             <a
               href="/about"
               className="group inline-flex items-center text-xs font-bold uppercase tracking-[0.2em] text-[var(--color-plum)] transition-colors hover:text-[var(--color-gold)]"
